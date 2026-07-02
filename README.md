@@ -1,10 +1,10 @@
-# 🌍 Smart Travel
+# Smart Travel
 
 An end-to-end AI-powered travel recommendation system that combines geospatial data, historical weather, points of interest, feature engineering, clustering, and explainable recommendations to help users discover their ideal travel destination.
 
 ---
 
-## ✨ Overview
+##  Overview
 
 Smart Travel is more than a machine learning project.
 
@@ -21,7 +21,7 @@ The goal is to simulate a real-world data product rather than a standalone machi
 
 ---
 
-# 🏗️ Project Pipeline
+#  Project Pipeline
 
 ```text
 Raw Destinations
@@ -53,22 +53,22 @@ FastAPI + Streamlit Dashboard
 
 ---
 
-# 🚀 Features
+#  Features
 
-- 🌍 Geocoding with OpenStreetMap (Nominatim)
-- ☀️ Historical weather collection using Open-Meteo Archive API
-- 🍝 Restaurant, café, museum, beach, park and nightlife extraction using Overpass API
-- 📊 Exploratory Data Analysis
-- ⚙️ Feature Engineering
-- 🤖 K-Means clustering
-- 🎯 Explainable recommendation engine
-- 🌐 REST API with FastAPI
-- 🎨 Interactive dashboard with Streamlit
-- 🗺️ Interactive destination map
+-  Geocoding with OpenStreetMap (Nominatim)
+-  Historical weather collection using Open-Meteo Archive API
+-  Restaurant, café, museum, beach, park and nightlife extraction using Overpass API
+-  Exploratory Data Analysis
+-  Feature Engineering
+-  K-Means clustering
+-  Explainable recommendation engine
+-  REST API with FastAPI
+-  Interactive dashboard with Streamlit
+-  Interactive destination map
 
 ---
 
-# 🧠 Machine Learning
+#  Machine Learning
 
 The first recommendation model uses K-Means clustering.
 
@@ -89,13 +89,13 @@ Although **k = 2** achieved the highest Silhouette Score, **k = 3** was selected
 
 Example clusters:
 
-- 🏖️ Warm Coastal & Beach
-- 🌿 Cool Balanced & Nature
-- 🏙️ Urban Culture & Food
+-  Warm Coastal & Beach
+-  Cool Balanced & Nature
+-  Urban Culture & Food
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```text
 smart-travel/
@@ -129,7 +129,7 @@ smart-travel/
 
 ---
 
-# 📊 Data Sources
+#  Data Sources
 
 The project integrates multiple public data sources.
 
@@ -145,7 +145,7 @@ More details are available in:
 
 ---
 
-# ⚙️ Feature Engineering
+#  Feature Engineering
 
 The project creates several travel-oriented features, including:
 
@@ -169,7 +169,7 @@ More information:
 
 ---
 
-# 🖥️ Dashboard
+#  Dashboard
 
 The Streamlit dashboard allows users to:
 
@@ -181,7 +181,7 @@ The Streamlit dashboard allows users to:
 
 ---
 
-# 🔌 API
+#  API
 
 The recommendation engine is also available through FastAPI.
 
@@ -203,7 +203,7 @@ The API returns ranked destinations together with recommendation scores and expl
 
 ---
 
-# 💻 Installation
+#  Installation
 
 Clone the repository:
 
@@ -234,7 +234,7 @@ pip install -r requirements.txt
 
 ---
 
-# ▶️ Run the Dashboard
+#  Run the Dashboard
 
 ```bash
 streamlit run dashboard/streamlit_app.py
@@ -248,7 +248,7 @@ http://localhost:8501
 
 ---
 
-# ▶️ Run the API
+#  Run the API
 
 ```bash
 uvicorn src.api:app --reload
@@ -262,7 +262,7 @@ http://localhost:8000/docs
 
 ---
 
-# 📸 Screenshots
+#  Screenshots
 
 ## Dashboard
 
@@ -278,7 +278,7 @@ _Add screenshots here._
 
 ---
 
-# 🛠️ Tech Stack
+#  Tech Stack
 
 - Python
 - Pandas
@@ -296,7 +296,7 @@ _Add screenshots here._
 
 ---
 
-# 📌 Future Improvements
+#  Future Improvements
 
 - Monthly weather features
 - Hotel and flight price integration
@@ -308,7 +308,7 @@ _Add screenshots here._
 
 ---
 
-# 👩‍💻 Author
+#  Author
 
 **Catinca Marinescu**
 
