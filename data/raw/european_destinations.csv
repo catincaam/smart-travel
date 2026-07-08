@@ -1,21 +1,21 @@
-destination_name,country
-Kefalonia,Greece
-Santorini,Greece
-Madeira,Portugal
-Mallorca,Spain
-Sardinia,Italy
-Dubrovnik,Croatia
-Split,Croatia
-Lisbon,Portugal
-Barcelona,Spain
-Nice,France
-Amalfi,Italy
-Cinque Terre,Italy
-Interlaken,Switzerland
-Zermatt,Switzerland
-Lake Bled,Slovenia
-Prague,Czech Republic
-Vienna,Austria
-Budapest,Hungary
-Paris,France
-Amsterdam,Netherlands
+destination_name,search_name,country,destination_type
+Kefalonia,Argostoli,Greece,island
+Santorini,Santorini,Greece,island
+Funchal,Funchal,Portugal,island
+Mallorca,Palma de Mallorca,Spain,island
+Sardinia,Cagliari,Italy,island
+Dubrovnik,Dubrovnik,Croatia,coastal_city
+Split,Split,Croatia,coastal_city
+Lisbon,Lisbon,Portugal,coastal_city
+Barcelona,Barcelona,Spain,coastal_city
+Nice,Nice,France,coastal_city
+Amalfi,Amalfi,Italy,coastal_city
+Cinque Terre,Monterosso al Mare,Italy,region
+Interlaken,Interlaken,Switzerland,mountain
+Zermatt,Zermatt,Switzerland,mountain
+Lake Bled,Lake Bled,Slovenia,mountain
+Prague,Prague,Czech Republic,city
+Vienna,Vienna,Austria,city
+Budapest,Budapest,Hungary,city
+Paris,Paris,France,city
+Amsterdam,Amsterdam,Netherlands,city

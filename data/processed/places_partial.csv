@@ -1,0 +1,21 @@
+destination_name,country,destination_type,search_radius_m,place_latitude,place_longitude,restaurant_count,cafe_count,bar_count,museum_count,park_count,nearby_beach_count
+Kefalonia,Greece,island,15000,38.18,20.49,138.0,53.0,30.0,8.0,5.0,65.0
+Santorini,Greece,island,15000,36.41,25.46,302.0,75.0,53.0,15.0,4.0,24.0
+Funchal,Portugal,island,15000,32.65,-16.91,565.0,306.0,288.0,31.0,38.0,13.0
+Mallorca,Spain,island,15000,39.57,2.65,885.0,721.0,204.0,20.0,394.0,72.0
+Sardinia,Italy,island,15000,39.22,9.11,349.0,264.0,12.0,38.0,443.0,23.0
+Dubrovnik,Croatia,coastal_city,8000,42.65,18.09,201.0,63.0,66.0,18.0,20.0,34.0
+Split,Croatia,coastal_city,8000,43.51,16.44,242.0,318.0,87.0,18.0,112.0,71.0
+Lisbon,Portugal,coastal_city,8000,38.71,-9.14,3083.0,1468.0,360.0,112.0,466.0,29.0
+Barcelona,Spain,coastal_city,8000,41.38,2.18,3996.0,1648.0,1121.0,96.0,787.0,16.0
+Nice,France,coastal_city,8000,43.7,7.27,873.0,241.0,146.0,25.0,135.0,55.0
+Amalfi,Italy,coastal_city,8000,40.63,14.6,174.0,41.0,34.0,11.0,30.0,18.0
+Cinque Terre,Italy,region,15000,44.15,9.66,335.0,88.0,96.0,15.0,41.0,33.0
+Interlaken,Switzerland,mountain,5000,46.69,7.86,105.0,16.0,17.0,3.0,18.0,9.0
+Zermatt,Switzerland,mountain,5000,46.02,7.75,103.0,12.0,11.0,2.0,2.0,0.0
+Lake Bled,Slovenia,mountain,5000,46.36,14.09,49.0,21.0,8.0,1.0,4.0,2.0
+Prague,Czech Republic,city,3000,50.09,14.42,1492.0,751.0,364.0,119.0,185.0,0.0
+Vienna,Austria,city,3000,48.21,16.37,1654.0,710.0,350.0,130.0,296.0,1.0
+Budapest,Hungary,city,3000,47.48,19.15,48.0,22.0,2.0,8.0,102.0,0.0
+Paris,France,city,3000,48.86,2.32,4612.0,1254.0,906.0,98.0,189.0,0.0
+Amsterdam,Netherlands,city,3000,52.37,4.89,1531.0,552.0,194.0,74.0,114.0,1.0

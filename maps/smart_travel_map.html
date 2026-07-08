@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_96e32fa37fc6128c28763bbae9ad00b6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="
+        position: fixed;
+        bottom: 35px;
+        left: 35px;
+        z-index: 9999;
+        background: white;
+        padding: 12px 14px;
+        border: 1px solid #999;
+        border-radius: 6px;
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    ">
+        <strong>Smart Travel Map</strong><br>
+        Green / Blue / Purple: 80+<br>
+        Orange: 50-79<br>
+        Red: below 50<br>
+        Marker size increases with score.
+    </div>
+    
+    
+            <div class="folium-map" id="map_96e32fa37fc6128c28763bbae9ad00b6" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_96e32fa37fc6128c28763bbae9ad00b6 = L.map(
+                "map_96e32fa37fc6128c28763bbae9ad00b6",
+                {
+                    center: [47.0, 12.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 4,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a19676d729c3294b95f3237152d6a3af = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a19676d729c3294b95f3237152d6a3af.addTo(map_96e32fa37fc6128c28763bbae9ad00b6);
+        
+    
+            var feature_group_e8551daba3508be2bb49f60f856861f1 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_818811a82bd028f6c33e9b516dea4fab = L.circleMarker(
+                [38.18, 20.49],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.865, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_3c2de5354ef026ac3bca15098dc8646e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_79ed977f03d2cbb7ba4ff6bd47bff36b = $(`<div id="html_79ed977f03d2cbb7ba4ff6bd47bff36b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Kefalonia</h3>         <p style="margin: 0 0 8px 0;"><strong>Greece</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 98.5 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 98.5 / 100 *****</p>         <p style="margin: 0;"><strong>Food:</strong> 3.3 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 90.3 / 100 *****</p>         <p style="margin: 0;"><strong>Culture:</strong> 6.2 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.6 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 27.0 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.2 mm/day</p>     </div>     </div>`)[0];
+                popup_3c2de5354ef026ac3bca15098dc8646e.setContent(html_79ed977f03d2cbb7ba4ff6bd47bff36b);
+            
+        
+
+        circle_marker_818811a82bd028f6c33e9b516dea4fab.bindPopup(popup_3c2de5354ef026ac3bca15098dc8646e)
+        ;
+
+        
+    
+    
+            circle_marker_818811a82bd028f6c33e9b516dea4fab.bindTooltip(
+                `<div>
+                     Kefalonia - 98.5/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c96a2c5752f489aeaf1b70a4790c1b49 = L.circleMarker(
+                [36.41, 25.46],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.7624, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_08d3909226fcf7fc80b2ab0dd9830368 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_196d485e8a853a7847b856d934718849 = $(`<div id="html_196d485e8a853a7847b856d934718849" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Santorini</h3>         <p style="margin: 0 0 8px 0;"><strong>Greece</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 97.4 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 97.4 / 100 *****</p>         <p style="margin: 0;"><strong>Food:</strong> 6.4 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 33.3 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 11.5 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.5 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.1 mm/day</p>     </div>     </div>`)[0];
+                popup_08d3909226fcf7fc80b2ab0dd9830368.setContent(html_196d485e8a853a7847b856d934718849);
+            
+        
+
+        circle_marker_c96a2c5752f489aeaf1b70a4790c1b49.bindPopup(popup_08d3909226fcf7fc80b2ab0dd9830368)
+        ;
+
+        
+    
+    
+            circle_marker_c96a2c5752f489aeaf1b70a4790c1b49.bindTooltip(
+                `<div>
+                     Santorini - 97.4/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_db242d2d518ca3c1ece95c9b628b30b9 = L.circleMarker(
+                [32.65, -16.91],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.6502, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_11efa300fd6f5aa5071cf09c731245e1 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c40009cae1afe1ad2a660af7bbdde76e = $(`<div id="html_c40009cae1afe1ad2a660af7bbdde76e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Funchal</h3>         <p style="margin: 0 0 8px 0;"><strong>Portugal</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 62.8 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 62.8 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 14.8 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 18.1 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 23.9 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 4.8 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 22.4 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.8 mm/day</p>     </div>     </div>`)[0];
+                popup_11efa300fd6f5aa5071cf09c731245e1.setContent(html_c40009cae1afe1ad2a660af7bbdde76e);
+            
+        
+
+        circle_marker_db242d2d518ca3c1ece95c9b628b30b9.bindPopup(popup_11efa300fd6f5aa5071cf09c731245e1)
+        ;
+
+        
+    
+    
+            circle_marker_db242d2d518ca3c1ece95c9b628b30b9.bindTooltip(
+                `<div>
+                     Funchal - 62.8/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e51bd67a78e19e69585fbe0834b5dce4 = L.circleMarker(
+                [39.57, 2.65],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.0982, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_7942865665b5ce336cb70d7e83ec4379 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ac98beb0bd27655529da655540311ac8 = $(`<div id="html_ac98beb0bd27655529da655540311ac8" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Mallorca</h3>         <p style="margin: 0 0 8px 0;"><strong>Spain</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 90.0 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 90.0 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 27.4 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 100.0 / 100 *****</p>         <p style="margin: 0;"><strong>Culture:</strong> 15.4 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 50.1 / 100 ***..</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.2 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.9 mm/day</p>     </div>     </div>`)[0];
+                popup_7942865665b5ce336cb70d7e83ec4379.setContent(html_ac98beb0bd27655529da655540311ac8);
+            
+        
+
+        circle_marker_e51bd67a78e19e69585fbe0834b5dce4.bindPopup(popup_7942865665b5ce336cb70d7e83ec4379)
+        ;
+
+        
+    
+    
+            circle_marker_e51bd67a78e19e69585fbe0834b5dce4.bindTooltip(
+                `<div>
+                     Mallorca - 90.0/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1fdda980119e3e66ff9787d8cd3a9c14 = L.circleMarker(
+                [39.22, 9.11],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.3979, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_dad9d36d670945b3647089a3bc631234 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_fc3dcb40035a4799b36917f8b841c9d4 = $(`<div id="html_fc3dcb40035a4799b36917f8b841c9d4" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Sardinia</h3>         <p style="margin: 0 0 8px 0;"><strong>Italy</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Nature</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 93.3 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 93.3 / 100 *****</p>         <p style="margin: 0;"><strong>Food:</strong> 10.4 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 31.9 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 29.2 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 56.3 / 100 ***..</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.1 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.2 mm/day</p>     </div>     </div>`)[0];
+                popup_dad9d36d670945b3647089a3bc631234.setContent(html_fc3dcb40035a4799b36917f8b841c9d4);
+            
+        
+
+        circle_marker_1fdda980119e3e66ff9787d8cd3a9c14.bindPopup(popup_dad9d36d670945b3647089a3bc631234)
+        ;
+
+        
+    
+    
+            circle_marker_1fdda980119e3e66ff9787d8cd3a9c14.bindTooltip(
+                `<div>
+                     Sardinia - 93.3/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_306aa5acd81cca69ac29db1df0a88e17 = L.circleMarker(
+                [42.65, 18.09],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.9579, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_c7e1e0d175ee7adf43eaf4c8f896cac5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_620fc114f3be5626238dcf8086907cbb = $(`<div id="html_620fc114f3be5626238dcf8086907cbb" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Dubrovnik</h3>         <p style="margin: 0 0 8px 0;"><strong>Croatia</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 77.3 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 77.3 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 4.5 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 47.2 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 13.8 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 2.5 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 25.2 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.1 mm/day</p>     </div>     </div>`)[0];
+                popup_c7e1e0d175ee7adf43eaf4c8f896cac5.setContent(html_620fc114f3be5626238dcf8086907cbb);
+            
+        
+
+        circle_marker_306aa5acd81cca69ac29db1df0a88e17.bindPopup(popup_c7e1e0d175ee7adf43eaf4c8f896cac5)
+        ;
+
+        
+    
+    
+            circle_marker_306aa5acd81cca69ac29db1df0a88e17.bindTooltip(
+                `<div>
+                     Dubrovnik - 77.3/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1d4248d23cff0da970476da452744e6e = L.circleMarker(
+                [43.51, 16.44],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.3827, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_77be7078a87b96a60d29145481849e03 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_fbf1b3d5ba4961f63431959f6cc5fe4c = $(`<div id="html_fbf1b3d5ba4961f63431959f6cc5fe4c" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Split</h3>         <p style="margin: 0 0 8px 0;"><strong>Croatia</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 82.0 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 82.0 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 9.6 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 98.6 / 100 *****</p>         <p style="margin: 0;"><strong>Culture:</strong> 13.8 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 14.2 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.1 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.1 mm/day</p>     </div>     </div>`)[0];
+                popup_77be7078a87b96a60d29145481849e03.setContent(html_fbf1b3d5ba4961f63431959f6cc5fe4c);
+            
+        
+
+        circle_marker_1d4248d23cff0da970476da452744e6e.bindPopup(popup_77be7078a87b96a60d29145481849e03)
+        ;
+
+        
+    
+    
+            circle_marker_1d4248d23cff0da970476da452744e6e.bindTooltip(
+                `<div>
+                     Split - 82.0/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dabb5ecab113b4eecf43f8c8d6fa5723 = L.circleMarker(
+                [38.71, -9.14],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.470099999999999, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_25d9eaa6cdc97c0ecddae6a1fde1fdb9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_921da91eedbc7f60c79a9991f03d7947 = $(`<div id="html_921da91eedbc7f60c79a9991f03d7947" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Lisbon</h3>         <p style="margin: 0 0 8px 0;"><strong>Portugal</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 71.9 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 71.9 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 77.6 / 100 ****.</p>         <p style="margin: 0;"><strong>Beach:</strong> 40.3 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 86.2 / 100 ****.</p>         <p style="margin: 0;"><strong>Nature:</strong> 59.2 / 100 ***..</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 22.5 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.3 mm/day</p>     </div>     </div>`)[0];
+                popup_25d9eaa6cdc97c0ecddae6a1fde1fdb9.setContent(html_921da91eedbc7f60c79a9991f03d7947);
+            
+        
+
+        circle_marker_dabb5ecab113b4eecf43f8c8d6fa5723.bindPopup(popup_25d9eaa6cdc97c0ecddae6a1fde1fdb9)
+        ;
+
+        
+    
+    
+            circle_marker_dabb5ecab113b4eecf43f8c8d6fa5723.bindTooltip(
+                `<div>
+                     Lisbon - 71.9/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a215ed70ab77cbdd3aea37b161f85209 = L.circleMarker(
+                [41.38, 2.18],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.9759, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_ce6b29c2f390cbc6518d7403c7bc0823 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_58350655255b40df418da94488405cb4 = $(`<div id="html_58350655255b40df418da94488405cb4" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Barcelona</h3>         <p style="margin: 0 0 8px 0;"><strong>Spain</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 77.5 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 77.5 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 96.2 / 100 *****</p>         <p style="margin: 0;"><strong>Beach:</strong> 22.2 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 73.8 / 100 ****.</p>         <p style="margin: 0;"><strong>Nature:</strong> 100.0 / 100 *****</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 24.8 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.6 mm/day</p>     </div>     </div>`)[0];
+                popup_ce6b29c2f390cbc6518d7403c7bc0823.setContent(html_58350655255b40df418da94488405cb4);
+            
+        
+
+        circle_marker_a215ed70ab77cbdd3aea37b161f85209.bindPopup(popup_ce6b29c2f390cbc6518d7403c7bc0823)
+        ;
+
+        
+    
+    
+            circle_marker_a215ed70ab77cbdd3aea37b161f85209.bindTooltip(
+                `<div>
+                     Barcelona - 77.5/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dbff21ac800fc5164e63de5086d58aa2 = L.circleMarker(
+                [43.7, 7.27],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.307099999999998, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_bcda93c46ba9d9ed38cd857649bca0cd = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_f80dcf4e995c94e6213c45dfcac5d17d = $(`<div id="html_f80dcf4e995c94e6213c45dfcac5d17d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Nice</h3>         <p style="margin: 0 0 8px 0;"><strong>France</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 81.2 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 81.2 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 19.0 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 76.4 / 100 ****.</p>         <p style="margin: 0;"><strong>Culture:</strong> 19.2 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 17.1 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 24.6 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.8 mm/day</p>     </div>     </div>`)[0];
+                popup_bcda93c46ba9d9ed38cd857649bca0cd.setContent(html_f80dcf4e995c94e6213c45dfcac5d17d);
+            
+        
+
+        circle_marker_dbff21ac800fc5164e63de5086d58aa2.bindPopup(popup_bcda93c46ba9d9ed38cd857649bca0cd)
+        ;
+
+        
+    
+    
+            circle_marker_dbff21ac800fc5164e63de5086d58aa2.bindTooltip(
+                `<div>
+                     Nice - 81.2/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e7a21398c33ee0afd75d4a888bfd424c = L.circleMarker(
+                [40.63, 14.6],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.6203, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_f882da5f11c0c62294865b64c2ec823a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_79d557584271dc4c6f2f64a1c8364e02 = $(`<div id="html_79d557584271dc4c6f2f64a1c8364e02" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Amalfi</h3>         <p style="margin: 0 0 8px 0;"><strong>Italy</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 84.7 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 84.7 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 3.7 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 25.0 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 8.5 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 3.8 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 25.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.3 mm/day</p>     </div>     </div>`)[0];
+                popup_f882da5f11c0c62294865b64c2ec823a.setContent(html_79d557584271dc4c6f2f64a1c8364e02);
+            
+        
+
+        circle_marker_e7a21398c33ee0afd75d4a888bfd424c.bindPopup(popup_f882da5f11c0c62294865b64c2ec823a)
+        ;
+
+        
+    
+    
+            circle_marker_e7a21398c33ee0afd75d4a888bfd424c.bindTooltip(
+                `<div>
+                     Amalfi - 84.7/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_824c09d336d237107ac72ae9a3d8ef83 = L.circleMarker(
+                [44.15, 9.66],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.1893, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_e0701793ef6247c4be87a7dcd39eea4b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_25b70e3b25d149ce88e95fe4d01dd15f = $(`<div id="html_25b70e3b25d149ce88e95fe4d01dd15f" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Cinque Terre</h3>         <p style="margin: 0 0 8px 0;"><strong>Italy</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 68.8 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 68.8 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 7.2 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 45.8 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 11.5 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 5.2 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 24.3 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.6 mm/day</p>     </div>     </div>`)[0];
+                popup_e0701793ef6247c4be87a7dcd39eea4b.setContent(html_25b70e3b25d149ce88e95fe4d01dd15f);
+            
+        
+
+        circle_marker_824c09d336d237107ac72ae9a3d8ef83.bindPopup(popup_e0701793ef6247c4be87a7dcd39eea4b)
+        ;
+
+        
+    
+    
+            circle_marker_824c09d336d237107ac72ae9a3d8ef83.bindTooltip(
+                `<div>
+                     Cinque Terre - 68.8/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2f5d2b24b77b6e8da0b4227de9f0271e = L.circleMarker(
+                [46.69, 7.86],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.6514, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_d800c5d0d2e9fc0c2200391d11e85918 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6e48e95542e332851d0b3c3639e21edd = $(`<div id="html_6e48e95542e332851d0b3c3639e21edd" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Interlaken</h3>         <p style="margin: 0 0 8px 0;"><strong>Switzerland</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 29.5 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 29.5 / 100 *....</p>         <p style="margin: 0;"><strong>Food:</strong> 2.1 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 12.5 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 2.3 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 2.3 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.1 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 5.3 mm/day</p>     </div>     </div>`)[0];
+                popup_d800c5d0d2e9fc0c2200391d11e85918.setContent(html_6e48e95542e332851d0b3c3639e21edd);
+            
+        
+
+        circle_marker_2f5d2b24b77b6e8da0b4227de9f0271e.bindPopup(popup_d800c5d0d2e9fc0c2200391d11e85918)
+        ;
+
+        
+    
+    
+            circle_marker_2f5d2b24b77b6e8da0b4227de9f0271e.bindTooltip(
+                `<div>
+                     Interlaken - 29.5/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a972b25c00bf2a6a539b87bddf711c7a = L.circleMarker(
+                [46.02, 7.75],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.8846, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_47204de42d849b4d30789b009f3ba065 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_bbe676d5e16be666d0740ecb77a170a7 = $(`<div id="html_bbe676d5e16be666d0740ecb77a170a7" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Zermatt</h3>         <p style="margin: 0 0 8px 0;"><strong>Switzerland</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 20.9 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 20.9 / 100 *....</p>         <p style="margin: 0;"><strong>Food:</strong> 2.0 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 1.5 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.2 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 12.3 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.5 mm/day</p>     </div>     </div>`)[0];
+                popup_47204de42d849b4d30789b009f3ba065.setContent(html_bbe676d5e16be666d0740ecb77a170a7);
+            
+        
+
+        circle_marker_a972b25c00bf2a6a539b87bddf711c7a.bindPopup(popup_47204de42d849b4d30789b009f3ba065)
+        ;
+
+        
+    
+    
+            circle_marker_a972b25c00bf2a6a539b87bddf711c7a.bindTooltip(
+                `<div>
+                     Zermatt - 20.9/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dd389152fbfbe8e2e83409a5be5209b3 = L.circleMarker(
+                [46.36, 14.09],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.6288, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_034ae66c60cef1cd6417952ad3e22075 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b66cc0cffecbc8aa4e65f6f75b35ed18 = $(`<div id="html_b66cc0cffecbc8aa4e65f6f75b35ed18" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Lake Bled</h3>         <p style="margin: 0 0 8px 0;"><strong>Slovenia</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 40.3 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 40.3 / 100 **...</p>         <p style="margin: 0;"><strong>Food:</strong> 1.2 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 2.8 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 0.8 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.5 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.4 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 3.5 mm/day</p>     </div>     </div>`)[0];
+                popup_034ae66c60cef1cd6417952ad3e22075.setContent(html_b66cc0cffecbc8aa4e65f6f75b35ed18);
+            
+        
+
+        circle_marker_dd389152fbfbe8e2e83409a5be5209b3.bindPopup(popup_034ae66c60cef1cd6417952ad3e22075)
+        ;
+
+        
+    
+    
+            circle_marker_dd389152fbfbe8e2e83409a5be5209b3.bindTooltip(
+                `<div>
+                     Lake Bled - 40.3/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a9ec7c15c5fa413dc40c89ba87912572 = L.circleMarker(
+                [50.09, 14.42],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.5369, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_e45f8d0a5dbf56984c8e767d42c135ba = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c8ed49d80bf1bd3a481e9eddf05ee9dd = $(`<div id="html_c8ed49d80bf1bd3a481e9eddf05ee9dd" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Prague</h3>         <p style="margin: 0 0 8px 0;"><strong>Czech Republic</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 50.4 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 50.4 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 38.2 / 100 **...</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 91.5 / 100 *****</p>         <p style="margin: 0;"><strong>Nature:</strong> 23.5 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.2 mm/day</p>     </div>     </div>`)[0];
+                popup_e45f8d0a5dbf56984c8e767d42c135ba.setContent(html_c8ed49d80bf1bd3a481e9eddf05ee9dd);
+            
+        
+
+        circle_marker_a9ec7c15c5fa413dc40c89ba87912572.bindPopup(popup_e45f8d0a5dbf56984c8e767d42c135ba)
+        ;
+
+        
+    
+    
+            circle_marker_a9ec7c15c5fa413dc40c89ba87912572.bindTooltip(
+                `<div>
+                     Prague - 50.4/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0995aa888bf5749015f7b5e5f29dbadc = L.circleMarker(
+                [48.21, 16.37],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.3811, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_e1c9011f40004e93553320d1ae020c1d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_12d060c346489eecd1a93149864404b0 = $(`<div id="html_12d060c346489eecd1a93149864404b0" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Vienna</h3>         <p style="margin: 0 0 8px 0;"><strong>Austria</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 59.8 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 59.8 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 40.3 / 100 **...</p>         <p style="margin: 0;"><strong>Beach:</strong> 1.4 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 100.0 / 100 *****</p>         <p style="margin: 0;"><strong>Nature:</strong> 37.6 / 100 **...</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 22.0 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.9 mm/day</p>     </div>     </div>`)[0];
+                popup_e1c9011f40004e93553320d1ae020c1d.setContent(html_12d060c346489eecd1a93149864404b0);
+            
+        
+
+        circle_marker_0995aa888bf5749015f7b5e5f29dbadc.bindPopup(popup_e1c9011f40004e93553320d1ae020c1d)
+        ;
+
+        
+    
+    
+            circle_marker_0995aa888bf5749015f7b5e5f29dbadc.bindTooltip(
+                `<div>
+                     Vienna - 59.8/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7c58d8b8e703d9458c4079d6d19f735d = L.circleMarker(
+                [47.48, 19.15],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.0534, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_2c79cb831ae54b15e3f048c18ba8c019 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b2b48ae9a7097e66d1963cfa5666bfbc = $(`<div id="html_b2b48ae9a7097e66d1963cfa5666bfbc" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Budapest</h3>         <p style="margin: 0 0 8px 0;"><strong>Hungary</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 67.3 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 67.3 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 1.2 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 6.2 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 13.0 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 23.3 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.8 mm/day</p>     </div>     </div>`)[0];
+                popup_2c79cb831ae54b15e3f048c18ba8c019.setContent(html_b2b48ae9a7097e66d1963cfa5666bfbc);
+            
+        
+
+        circle_marker_7c58d8b8e703d9458c4079d6d19f735d.bindPopup(popup_2c79cb831ae54b15e3f048c18ba8c019)
+        ;
+
+        
+    
+    
+            circle_marker_7c58d8b8e703d9458c4079d6d19f735d.bindTooltip(
+                `<div>
+                     Budapest - 67.3/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_691df6c2e0d9f4b529a376198dff3ebd = L.circleMarker(
+                [48.86, 2.32],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.7584, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_c451e4efdbaf6576a8a85e4af1c8b713 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6ef286827daf2c3210650149e64d76a7 = $(`<div id="html_6ef286827daf2c3210650149e64d76a7" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Paris</h3>         <p style="margin: 0 0 8px 0;"><strong>France</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Food & Nightlife</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 41.8 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 41.8 / 100 **...</p>         <p style="margin: 0;"><strong>Food:</strong> 100.0 / 100 *****</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 75.4 / 100 ****.</p>         <p style="margin: 0;"><strong>Nature:</strong> 24.0 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.0 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.9 mm/day</p>     </div>     </div>`)[0];
+                popup_c451e4efdbaf6576a8a85e4af1c8b713.setContent(html_6ef286827daf2c3210650149e64d76a7);
+            
+        
+
+        circle_marker_691df6c2e0d9f4b529a376198dff3ebd.bindPopup(popup_c451e4efdbaf6576a8a85e4af1c8b713)
+        ;
+
+        
+    
+    
+            circle_marker_691df6c2e0d9f4b529a376198dff3ebd.bindTooltip(
+                `<div>
+                     Paris - 41.8/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_28b3e2a39c90e952ef9958ca037e6f36 = L.circleMarker(
+                [52.37, 4.89],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.7135, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e8551daba3508be2bb49f60f856861f1);
+        
+    
+        var popup_7e90e3b2d6336e76224c465e929fc0cc = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c96494473d8e3216e6218ddc35878999 = $(`<div id="html_c96494473d8e3216e6218ddc35878999" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Amsterdam</h3>         <p style="margin: 0 0 8px 0;"><strong>Netherlands</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Summer Weather Score:</strong> 30.1 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 30.1 / 100 **...</p>         <p style="margin: 0;"><strong>Food:</strong> 35.5 / 100 **...</p>         <p style="margin: 0;"><strong>Beach:</strong> 1.4 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 56.9 / 100 ***..</p>         <p style="margin: 0;"><strong>Nature:</strong> 14.5 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 17.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.6 mm/day</p>     </div>     </div>`)[0];
+                popup_7e90e3b2d6336e76224c465e929fc0cc.setContent(html_c96494473d8e3216e6218ddc35878999);
+            
+        
+
+        circle_marker_28b3e2a39c90e952ef9958ca037e6f36.bindPopup(popup_7e90e3b2d6336e76224c465e929fc0cc)
+        ;
+
+        
+    
+    
+            circle_marker_28b3e2a39c90e952ef9958ca037e6f36.bindTooltip(
+                `<div>
+                     Amsterdam - 30.1/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_e8551daba3508be2bb49f60f856861f1.addTo(map_96e32fa37fc6128c28763bbae9ad00b6);
+        
+    
+            var feature_group_30ea67e023901dbd992d1ae6c69634fe = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_71beb6f94d68d8720b34e39491991c39 = L.circleMarker(
+                [38.18, 20.49],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.1252, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_382479ef07b790a2aa82ccad8e9c5771 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_220cdbd1ceb67b6cdc2b229a080a44d8 = $(`<div id="html_220cdbd1ceb67b6cdc2b229a080a44d8" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Kefalonia</h3>         <p style="margin: 0 0 8px 0;"><strong>Greece</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 90.3 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 98.5 / 100 *****</p>         <p style="margin: 0;"><strong>Food:</strong> 3.3 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 90.3 / 100 *****</p>         <p style="margin: 0;"><strong>Culture:</strong> 6.2 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.6 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 27.0 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.2 mm/day</p>     </div>     </div>`)[0];
+                popup_382479ef07b790a2aa82ccad8e9c5771.setContent(html_220cdbd1ceb67b6cdc2b229a080a44d8);
+            
+        
+
+        circle_marker_71beb6f94d68d8720b34e39491991c39.bindPopup(popup_382479ef07b790a2aa82ccad8e9c5771)
+        ;
+
+        
+    
+    
+            circle_marker_71beb6f94d68d8720b34e39491991c39.bindTooltip(
+                `<div>
+                     Kefalonia - 90.3/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d2a725f0c57901fff344e4c4e42e766e = L.circleMarker(
+                [36.41, 25.46],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.9997, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_aab51e79b796dd5afe6cf0077b690032 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8f4726cc68b24f446e6a2e1fe4b44900 = $(`<div id="html_8f4726cc68b24f446e6a2e1fe4b44900" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Santorini</h3>         <p style="margin: 0 0 8px 0;"><strong>Greece</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 33.3 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 97.4 / 100 *****</p>         <p style="margin: 0;"><strong>Food:</strong> 6.4 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 33.3 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 11.5 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.5 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.1 mm/day</p>     </div>     </div>`)[0];
+                popup_aab51e79b796dd5afe6cf0077b690032.setContent(html_8f4726cc68b24f446e6a2e1fe4b44900);
+            
+        
+
+        circle_marker_d2a725f0c57901fff344e4c4e42e766e.bindPopup(popup_aab51e79b796dd5afe6cf0077b690032)
+        ;
+
+        
+    
+    
+            circle_marker_d2a725f0c57901fff344e4c4e42e766e.bindTooltip(
+                `<div>
+                     Santorini - 33.3/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_21e47dac196e611718c66b220d39945f = L.circleMarker(
+                [32.65, -16.91],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.6254, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_2cf2ccb2c98da6d842c325e82f16d059 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b8ee14963b9691254e2839294cc19c0b = $(`<div id="html_b8ee14963b9691254e2839294cc19c0b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Funchal</h3>         <p style="margin: 0 0 8px 0;"><strong>Portugal</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 18.1 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 62.8 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 14.8 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 18.1 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 23.9 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 4.8 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 22.4 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.8 mm/day</p>     </div>     </div>`)[0];
+                popup_2cf2ccb2c98da6d842c325e82f16d059.setContent(html_b8ee14963b9691254e2839294cc19c0b);
+            
+        
+
+        circle_marker_21e47dac196e611718c66b220d39945f.bindPopup(popup_2cf2ccb2c98da6d842c325e82f16d059)
+        ;
+
+        
+    
+    
+            circle_marker_21e47dac196e611718c66b220d39945f.bindTooltip(
+                `<div>
+                     Funchal - 18.1/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a483f237853ac65b1ec13d20f5654344 = L.circleMarker(
+                [39.57, 2.65],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_9e5111783986a9b9a0852aa0ad8fafa9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3d1a5d8dbd3072b5e18258fe9cc96248 = $(`<div id="html_3d1a5d8dbd3072b5e18258fe9cc96248" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Mallorca</h3>         <p style="margin: 0 0 8px 0;"><strong>Spain</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 100.0 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 90.0 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 27.4 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 100.0 / 100 *****</p>         <p style="margin: 0;"><strong>Culture:</strong> 15.4 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 50.1 / 100 ***..</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.2 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.9 mm/day</p>     </div>     </div>`)[0];
+                popup_9e5111783986a9b9a0852aa0ad8fafa9.setContent(html_3d1a5d8dbd3072b5e18258fe9cc96248);
+            
+        
+
+        circle_marker_a483f237853ac65b1ec13d20f5654344.bindPopup(popup_9e5111783986a9b9a0852aa0ad8fafa9)
+        ;
+
+        
+    
+    
+            circle_marker_a483f237853ac65b1ec13d20f5654344.bindTooltip(
+                `<div>
+                     Mallorca - 100.0/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_85f711d0e2898cfb65afa4cafba357fc = L.circleMarker(
+                [39.22, 9.11],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.874600000000001, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_2e5d57c2ff9328098b9b85c9ad7036f3 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6be97a206e5af736532380cda32e2fff = $(`<div id="html_6be97a206e5af736532380cda32e2fff" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Sardinia</h3>         <p style="margin: 0 0 8px 0;"><strong>Italy</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Nature</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 31.9 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 93.3 / 100 *****</p>         <p style="margin: 0;"><strong>Food:</strong> 10.4 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 31.9 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 29.2 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 56.3 / 100 ***..</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.1 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.2 mm/day</p>     </div>     </div>`)[0];
+                popup_2e5d57c2ff9328098b9b85c9ad7036f3.setContent(html_6be97a206e5af736532380cda32e2fff);
+            
+        
+
+        circle_marker_85f711d0e2898cfb65afa4cafba357fc.bindPopup(popup_2e5d57c2ff9328098b9b85c9ad7036f3)
+        ;
+
+        
+    
+    
+            circle_marker_85f711d0e2898cfb65afa4cafba357fc.bindTooltip(
+                `<div>
+                     Sardinia - 31.9/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_214499e7d14a32fc447bb632e09d005e = L.circleMarker(
+                [42.65, 18.09],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.2498, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_d3cb1fd90b54ed7a7ce7f47b460505b9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9ffadecf588d0bbf6782cd239fa85207 = $(`<div id="html_9ffadecf588d0bbf6782cd239fa85207" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Dubrovnik</h3>         <p style="margin: 0 0 8px 0;"><strong>Croatia</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 47.2 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 77.3 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 4.5 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 47.2 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 13.8 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 2.5 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 25.2 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.1 mm/day</p>     </div>     </div>`)[0];
+                popup_d3cb1fd90b54ed7a7ce7f47b460505b9.setContent(html_9ffadecf588d0bbf6782cd239fa85207);
+            
+        
+
+        circle_marker_214499e7d14a32fc447bb632e09d005e.bindPopup(popup_d3cb1fd90b54ed7a7ce7f47b460505b9)
+        ;
+
+        
+    
+    
+            circle_marker_214499e7d14a32fc447bb632e09d005e.bindTooltip(
+                `<div>
+                     Dubrovnik - 47.2/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_854da61502db1f3b99cd6c9d53d0b249 = L.circleMarker(
+                [43.51, 16.44],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.8749, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_812270c990c4d1dd92a1e37c088e3fe4 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_89111d8eee07505fa3c06a593f7f1ad4 = $(`<div id="html_89111d8eee07505fa3c06a593f7f1ad4" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Split</h3>         <p style="margin: 0 0 8px 0;"><strong>Croatia</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 98.6 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 82.0 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 9.6 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 98.6 / 100 *****</p>         <p style="margin: 0;"><strong>Culture:</strong> 13.8 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 14.2 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.1 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.1 mm/day</p>     </div>     </div>`)[0];
+                popup_812270c990c4d1dd92a1e37c088e3fe4.setContent(html_89111d8eee07505fa3c06a593f7f1ad4);
+            
+        
+
+        circle_marker_854da61502db1f3b99cd6c9d53d0b249.bindPopup(popup_812270c990c4d1dd92a1e37c088e3fe4)
+        ;
+
+        
+    
+    
+            circle_marker_854da61502db1f3b99cd6c9d53d0b249.bindTooltip(
+                `<div>
+                     Split - 98.6/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7a93223cb69c515cbdfc281994dc63fc = L.circleMarker(
+                [38.71, -9.14],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.6252, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_79bdaf777f582243fc871c65ef75510b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2bf789c4bdeca7d362ea3504f273c24b = $(`<div id="html_2bf789c4bdeca7d362ea3504f273c24b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Lisbon</h3>         <p style="margin: 0 0 8px 0;"><strong>Portugal</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 40.3 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 71.9 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 77.6 / 100 ****.</p>         <p style="margin: 0;"><strong>Beach:</strong> 40.3 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 86.2 / 100 ****.</p>         <p style="margin: 0;"><strong>Nature:</strong> 59.2 / 100 ***..</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 22.5 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.3 mm/day</p>     </div>     </div>`)[0];
+                popup_79bdaf777f582243fc871c65ef75510b.setContent(html_2bf789c4bdeca7d362ea3504f273c24b);
+            
+        
+
+        circle_marker_7a93223cb69c515cbdfc281994dc63fc.bindPopup(popup_79bdaf777f582243fc871c65ef75510b)
+        ;
+
+        
+    
+    
+            circle_marker_7a93223cb69c515cbdfc281994dc63fc.bindTooltip(
+                `<div>
+                     Lisbon - 40.3/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d979dc5ddc63d07e868522700e6db3fd = L.circleMarker(
+                [41.38, 2.18],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.9998, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_cdfe0794f4c5901d6d0297abc4c860f7 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_12b65efc9928ff2639336d0207a03de3 = $(`<div id="html_12b65efc9928ff2639336d0207a03de3" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Barcelona</h3>         <p style="margin: 0 0 8px 0;"><strong>Spain</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 22.2 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 77.5 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 96.2 / 100 *****</p>         <p style="margin: 0;"><strong>Beach:</strong> 22.2 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 73.8 / 100 ****.</p>         <p style="margin: 0;"><strong>Nature:</strong> 100.0 / 100 *****</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 24.8 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.6 mm/day</p>     </div>     </div>`)[0];
+                popup_cdfe0794f4c5901d6d0297abc4c860f7.setContent(html_12b65efc9928ff2639336d0207a03de3);
+            
+        
+
+        circle_marker_d979dc5ddc63d07e868522700e6db3fd.bindPopup(popup_cdfe0794f4c5901d6d0297abc4c860f7)
+        ;
+
+        
+    
+    
+            circle_marker_d979dc5ddc63d07e868522700e6db3fd.bindTooltip(
+                `<div>
+                     Barcelona - 22.2/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d82812a3fd11b463835e7b88ed0e88aa = L.circleMarker(
+                [43.7, 7.27],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.8751, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_bb689be76b33cdb71aebf4da059a18de = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3081581b8905383a955fc117246b96fe = $(`<div id="html_3081581b8905383a955fc117246b96fe" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Nice</h3>         <p style="margin: 0 0 8px 0;"><strong>France</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 76.4 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 81.2 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 19.0 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 76.4 / 100 ****.</p>         <p style="margin: 0;"><strong>Culture:</strong> 19.2 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 17.1 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 24.6 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.8 mm/day</p>     </div>     </div>`)[0];
+                popup_bb689be76b33cdb71aebf4da059a18de.setContent(html_3081581b8905383a955fc117246b96fe);
+            
+        
+
+        circle_marker_d82812a3fd11b463835e7b88ed0e88aa.bindPopup(popup_bb689be76b33cdb71aebf4da059a18de)
+        ;
+
+        
+    
+    
+            circle_marker_d82812a3fd11b463835e7b88ed0e88aa.bindTooltip(
+                `<div>
+                     Nice - 76.4/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a2f1482e4dc72a27203f6af497f1622d = L.circleMarker(
+                [40.63, 14.6],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.25, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_c4d30dc37e83e43e53989bd975999578 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8a5f5244913cd44e2c41cb71dcaf3825 = $(`<div id="html_8a5f5244913cd44e2c41cb71dcaf3825" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Amalfi</h3>         <p style="margin: 0 0 8px 0;"><strong>Italy</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 25.0 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 84.7 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 3.7 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 25.0 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 8.5 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 3.8 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 25.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.3 mm/day</p>     </div>     </div>`)[0];
+                popup_c4d30dc37e83e43e53989bd975999578.setContent(html_8a5f5244913cd44e2c41cb71dcaf3825);
+            
+        
+
+        circle_marker_a2f1482e4dc72a27203f6af497f1622d.bindPopup(popup_c4d30dc37e83e43e53989bd975999578)
+        ;
+
+        
+    
+    
+            circle_marker_a2f1482e4dc72a27203f6af497f1622d.bindTooltip(
+                `<div>
+                     Amalfi - 25.0/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_94b35aa3437bfec84056aa4f5781627a = L.circleMarker(
+                [44.15, 9.66],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.1247, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_9aaedbb3da31aaef9a737c690d107407 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_8ccfc880329acdb34307ad2c8e00f073 = $(`<div id="html_8ccfc880329acdb34307ad2c8e00f073" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Cinque Terre</h3>         <p style="margin: 0 0 8px 0;"><strong>Italy</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 45.8 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 68.8 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 7.2 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 45.8 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 11.5 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 5.2 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 24.3 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.6 mm/day</p>     </div>     </div>`)[0];
+                popup_9aaedbb3da31aaef9a737c690d107407.setContent(html_8ccfc880329acdb34307ad2c8e00f073);
+            
+        
+
+        circle_marker_94b35aa3437bfec84056aa4f5781627a.bindPopup(popup_9aaedbb3da31aaef9a737c690d107407)
+        ;
+
+        
+    
+    
+            circle_marker_94b35aa3437bfec84056aa4f5781627a.bindTooltip(
+                `<div>
+                     Cinque Terre - 45.8/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b488010af86d3e28c873627ed1f6db3b = L.circleMarker(
+                [46.69, 7.86],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.125, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_7aaadff8afcfadb24ff1ea705b6041dc = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7aa2d46e106de4dd7dc958ee9fba9b2a = $(`<div id="html_7aa2d46e106de4dd7dc958ee9fba9b2a" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Interlaken</h3>         <p style="margin: 0 0 8px 0;"><strong>Switzerland</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 12.5 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 29.5 / 100 *....</p>         <p style="margin: 0;"><strong>Food:</strong> 2.1 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 12.5 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 2.3 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 2.3 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.1 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 5.3 mm/day</p>     </div>     </div>`)[0];
+                popup_7aaadff8afcfadb24ff1ea705b6041dc.setContent(html_7aa2d46e106de4dd7dc958ee9fba9b2a);
+            
+        
+
+        circle_marker_b488010af86d3e28c873627ed1f6db3b.bindPopup(popup_7aaadff8afcfadb24ff1ea705b6041dc)
+        ;
+
+        
+    
+    
+            circle_marker_b488010af86d3e28c873627ed1f6db3b.bindTooltip(
+                `<div>
+                     Interlaken - 12.5/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_085c9aeea53a4d9fd84bfad0e5227cb6 = L.circleMarker(
+                [46.02, 7.75],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_0204a4362ac1dcb99b0cab64f359ec57 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b99093056319eb1bbb8f1a3ab07df6d5 = $(`<div id="html_b99093056319eb1bbb8f1a3ab07df6d5" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Zermatt</h3>         <p style="margin: 0 0 8px 0;"><strong>Switzerland</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 0.0 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 20.9 / 100 *....</p>         <p style="margin: 0;"><strong>Food:</strong> 2.0 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 1.5 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.2 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 12.3 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.5 mm/day</p>     </div>     </div>`)[0];
+                popup_0204a4362ac1dcb99b0cab64f359ec57.setContent(html_b99093056319eb1bbb8f1a3ab07df6d5);
+            
+        
+
+        circle_marker_085c9aeea53a4d9fd84bfad0e5227cb6.bindPopup(popup_0204a4362ac1dcb99b0cab64f359ec57)
+        ;
+
+        
+    
+    
+            circle_marker_085c9aeea53a4d9fd84bfad0e5227cb6.bindTooltip(
+                `<div>
+                     Zermatt - 0.0/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0c2a61023dcbba04467b13a9a52f2373 = L.circleMarker(
+                [46.36, 14.09],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.2501999999999995, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_b0fd15db79e32291e1e09a1a3b301157 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_284daa6cc766ffbdd10aeaeea78ff6af = $(`<div id="html_284daa6cc766ffbdd10aeaeea78ff6af" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Lake Bled</h3>         <p style="margin: 0 0 8px 0;"><strong>Slovenia</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 2.8 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 40.3 / 100 **...</p>         <p style="margin: 0;"><strong>Food:</strong> 1.2 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 2.8 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 0.8 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.5 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.4 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 3.5 mm/day</p>     </div>     </div>`)[0];
+                popup_b0fd15db79e32291e1e09a1a3b301157.setContent(html_284daa6cc766ffbdd10aeaeea78ff6af);
+            
+        
+
+        circle_marker_0c2a61023dcbba04467b13a9a52f2373.bindPopup(popup_b0fd15db79e32291e1e09a1a3b301157)
+        ;
+
+        
+    
+    
+            circle_marker_0c2a61023dcbba04467b13a9a52f2373.bindTooltip(
+                `<div>
+                     Lake Bled - 2.8/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_62297ae58d18f8949238a00d5a4a56cf = L.circleMarker(
+                [50.09, 14.42],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_a92f2b3d57f848d49173344f09002fbb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c0a9a4d55efb41eb6db7d3221c06a538 = $(`<div id="html_c0a9a4d55efb41eb6db7d3221c06a538" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Prague</h3>         <p style="margin: 0 0 8px 0;"><strong>Czech Republic</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 0.0 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 50.4 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 38.2 / 100 **...</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 91.5 / 100 *****</p>         <p style="margin: 0;"><strong>Nature:</strong> 23.5 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.2 mm/day</p>     </div>     </div>`)[0];
+                popup_a92f2b3d57f848d49173344f09002fbb.setContent(html_c0a9a4d55efb41eb6db7d3221c06a538);
+            
+        
+
+        circle_marker_62297ae58d18f8949238a00d5a4a56cf.bindPopup(popup_a92f2b3d57f848d49173344f09002fbb)
+        ;
+
+        
+    
+    
+            circle_marker_62297ae58d18f8949238a00d5a4a56cf.bindTooltip(
+                `<div>
+                     Prague - 0.0/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_510e0057321ea35320cdfda930b009b5 = L.circleMarker(
+                [48.21, 16.37],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.1251, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_e8dd52ceb7e174c0dc6cb4be3b380693 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_16a3a39106ec9f157626a02041f596d1 = $(`<div id="html_16a3a39106ec9f157626a02041f596d1" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Vienna</h3>         <p style="margin: 0 0 8px 0;"><strong>Austria</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 1.4 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 59.8 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 40.3 / 100 **...</p>         <p style="margin: 0;"><strong>Beach:</strong> 1.4 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 100.0 / 100 *****</p>         <p style="margin: 0;"><strong>Nature:</strong> 37.6 / 100 **...</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 22.0 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.9 mm/day</p>     </div>     </div>`)[0];
+                popup_e8dd52ceb7e174c0dc6cb4be3b380693.setContent(html_16a3a39106ec9f157626a02041f596d1);
+            
+        
+
+        circle_marker_510e0057321ea35320cdfda930b009b5.bindPopup(popup_e8dd52ceb7e174c0dc6cb4be3b380693)
+        ;
+
+        
+    
+    
+            circle_marker_510e0057321ea35320cdfda930b009b5.bindTooltip(
+                `<div>
+                     Vienna - 1.4/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cfb40758e13f916bd42308b9e1432779 = L.circleMarker(
+                [47.48, 19.15],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_d6115dff777abaac9600c62a5033cdec = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4f5caff03d9107fdc5a208d8e16d6609 = $(`<div id="html_4f5caff03d9107fdc5a208d8e16d6609" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Budapest</h3>         <p style="margin: 0 0 8px 0;"><strong>Hungary</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 0.0 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 67.3 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 1.2 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 6.2 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 13.0 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 23.3 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.8 mm/day</p>     </div>     </div>`)[0];
+                popup_d6115dff777abaac9600c62a5033cdec.setContent(html_4f5caff03d9107fdc5a208d8e16d6609);
+            
+        
+
+        circle_marker_cfb40758e13f916bd42308b9e1432779.bindPopup(popup_d6115dff777abaac9600c62a5033cdec)
+        ;
+
+        
+    
+    
+            circle_marker_cfb40758e13f916bd42308b9e1432779.bindTooltip(
+                `<div>
+                     Budapest - 0.0/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ad0e430e10558a967461a13bdb55d41f = L.circleMarker(
+                [48.86, 2.32],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_6fa6b7b85c853ec6f3877dc98c56bb5f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_c899d4107b1a44b2dfb7fc1a2b491e2e = $(`<div id="html_c899d4107b1a44b2dfb7fc1a2b491e2e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Paris</h3>         <p style="margin: 0 0 8px 0;"><strong>France</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Food & Nightlife</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 0.0 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 41.8 / 100 **...</p>         <p style="margin: 0;"><strong>Food:</strong> 100.0 / 100 *****</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 75.4 / 100 ****.</p>         <p style="margin: 0;"><strong>Nature:</strong> 24.0 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.0 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.9 mm/day</p>     </div>     </div>`)[0];
+                popup_6fa6b7b85c853ec6f3877dc98c56bb5f.setContent(html_c899d4107b1a44b2dfb7fc1a2b491e2e);
+            
+        
+
+        circle_marker_ad0e430e10558a967461a13bdb55d41f.bindPopup(popup_6fa6b7b85c853ec6f3877dc98c56bb5f)
+        ;
+
+        
+    
+    
+            circle_marker_ad0e430e10558a967461a13bdb55d41f.bindTooltip(
+                `<div>
+                     Paris - 0.0/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f438d95e509d08b983892e1fbbeb22a9 = L.circleMarker(
+                [52.37, 4.89],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.1251, "stroke": true, "weight": 2}
+            ).addTo(feature_group_30ea67e023901dbd992d1ae6c69634fe);
+        
+    
+        var popup_ffdb16e30e0140b27a5fc3530892d475 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_cd3abcea464a38aeafe9625b5557106e = $(`<div id="html_cd3abcea464a38aeafe9625b5557106e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Amsterdam</h3>         <p style="margin: 0 0 8px 0;"><strong>Netherlands</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Beach Score:</strong> 1.4 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 30.1 / 100 **...</p>         <p style="margin: 0;"><strong>Food:</strong> 35.5 / 100 **...</p>         <p style="margin: 0;"><strong>Beach:</strong> 1.4 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 56.9 / 100 ***..</p>         <p style="margin: 0;"><strong>Nature:</strong> 14.5 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 17.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.6 mm/day</p>     </div>     </div>`)[0];
+                popup_ffdb16e30e0140b27a5fc3530892d475.setContent(html_cd3abcea464a38aeafe9625b5557106e);
+            
+        
+
+        circle_marker_f438d95e509d08b983892e1fbbeb22a9.bindPopup(popup_ffdb16e30e0140b27a5fc3530892d475)
+        ;
+
+        
+    
+    
+            circle_marker_f438d95e509d08b983892e1fbbeb22a9.bindTooltip(
+                `<div>
+                     Amsterdam - 1.4/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_ef3ef3cceb599948b211419ed3d185a1 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_2fd05041e43ab4892bb76f60daed05c9 = L.circleMarker(
+                [38.18, 20.49],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.5535, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_01559c6b14e9dc46c137cb773c1d934d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4cf47630c5dea785d066106f67cab4d0 = $(`<div id="html_4cf47630c5dea785d066106f67cab4d0" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Kefalonia</h3>         <p style="margin: 0 0 8px 0;"><strong>Greece</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 6.2 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 98.5 / 100 *****</p>         <p style="margin: 0;"><strong>Food:</strong> 3.3 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 90.3 / 100 *****</p>         <p style="margin: 0;"><strong>Culture:</strong> 6.2 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.6 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 27.0 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.2 mm/day</p>     </div>     </div>`)[0];
+                popup_01559c6b14e9dc46c137cb773c1d934d.setContent(html_4cf47630c5dea785d066106f67cab4d0);
+            
+        
+
+        circle_marker_2fd05041e43ab4892bb76f60daed05c9.bindPopup(popup_01559c6b14e9dc46c137cb773c1d934d)
+        ;
+
+        
+    
+    
+            circle_marker_2fd05041e43ab4892bb76f60daed05c9.bindTooltip(
+                `<div>
+                     Kefalonia - 6.2/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d07b70ea74b18b5379385f26f82fd9b2 = L.circleMarker(
+                [36.41, 25.46],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.0386, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_d829513ee81a45e1d604d37ebfbc3845 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_23b88dfabe067ac6a4bd5a288f2c676e = $(`<div id="html_23b88dfabe067ac6a4bd5a288f2c676e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Santorini</h3>         <p style="margin: 0 0 8px 0;"><strong>Greece</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 11.5 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 97.4 / 100 *****</p>         <p style="margin: 0;"><strong>Food:</strong> 6.4 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 33.3 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 11.5 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.5 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.1 mm/day</p>     </div>     </div>`)[0];
+                popup_d829513ee81a45e1d604d37ebfbc3845.setContent(html_23b88dfabe067ac6a4bd5a288f2c676e);
+            
+        
+
+        circle_marker_d07b70ea74b18b5379385f26f82fd9b2.bindPopup(popup_d829513ee81a45e1d604d37ebfbc3845)
+        ;
+
+        
+    
+    
+            circle_marker_d07b70ea74b18b5379385f26f82fd9b2.bindTooltip(
+                `<div>
+                     Santorini - 11.5/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6652e56f73e38f703d9150370d4f41d9 = L.circleMarker(
+                [32.65, -16.91],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.1465, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_ef3f77e7a6477b357fc3a0e2559c7d56 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_1bb89a970d346354737f7f645e762a1e = $(`<div id="html_1bb89a970d346354737f7f645e762a1e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Funchal</h3>         <p style="margin: 0 0 8px 0;"><strong>Portugal</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 23.9 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 62.8 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 14.8 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 18.1 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 23.9 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 4.8 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 22.4 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.8 mm/day</p>     </div>     </div>`)[0];
+                popup_ef3f77e7a6477b357fc3a0e2559c7d56.setContent(html_1bb89a970d346354737f7f645e762a1e);
+            
+        
+
+        circle_marker_6652e56f73e38f703d9150370d4f41d9.bindPopup(popup_ef3f77e7a6477b357fc3a0e2559c7d56)
+        ;
+
+        
+    
+    
+            circle_marker_6652e56f73e38f703d9150370d4f41d9.bindTooltip(
+                `<div>
+                     Funchal - 23.9/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b97c7e992190caa58350cf940d0a5f19 = L.circleMarker(
+                [39.57, 2.65],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.3842, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_4a138361fad0a69e2525b91be6875723 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e36d6568d81dc4578834efbca1d983e8 = $(`<div id="html_e36d6568d81dc4578834efbca1d983e8" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Mallorca</h3>         <p style="margin: 0 0 8px 0;"><strong>Spain</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 15.4 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 90.0 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 27.4 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 100.0 / 100 *****</p>         <p style="margin: 0;"><strong>Culture:</strong> 15.4 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 50.1 / 100 ***..</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.2 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.9 mm/day</p>     </div>     </div>`)[0];
+                popup_4a138361fad0a69e2525b91be6875723.setContent(html_e36d6568d81dc4578834efbca1d983e8);
+            
+        
+
+        circle_marker_b97c7e992190caa58350cf940d0a5f19.bindPopup(popup_4a138361fad0a69e2525b91be6875723)
+        ;
+
+        
+    
+    
+            circle_marker_b97c7e992190caa58350cf940d0a5f19.bindTooltip(
+                `<div>
+                     Mallorca - 15.4/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_80a4ef7644c80fa04859d740bd0c30d0 = L.circleMarker(
+                [39.22, 9.11],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.630700000000001, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_58fec3e182c6c17830df55a15b06613c = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_959dab1c8e49c5ee44023401fe11e0f4 = $(`<div id="html_959dab1c8e49c5ee44023401fe11e0f4" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Sardinia</h3>         <p style="margin: 0 0 8px 0;"><strong>Italy</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Nature</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 29.2 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 93.3 / 100 *****</p>         <p style="margin: 0;"><strong>Food:</strong> 10.4 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 31.9 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 29.2 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 56.3 / 100 ***..</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.1 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.2 mm/day</p>     </div>     </div>`)[0];
+                popup_58fec3e182c6c17830df55a15b06613c.setContent(html_959dab1c8e49c5ee44023401fe11e0f4);
+            
+        
+
+        circle_marker_80a4ef7644c80fa04859d740bd0c30d0.bindPopup(popup_58fec3e182c6c17830df55a15b06613c)
+        ;
+
+        
+    
+    
+            circle_marker_80a4ef7644c80fa04859d740bd0c30d0.bindTooltip(
+                `<div>
+                     Sardinia - 29.2/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cd9e9add3f9bec9d94eca04b6fda80ce = L.circleMarker(
+                [42.65, 18.09],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.2465, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_29276ee50073055adbf6895b0c5007bb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_7df3741fbafe9b11ed36c03284483944 = $(`<div id="html_7df3741fbafe9b11ed36c03284483944" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Dubrovnik</h3>         <p style="margin: 0 0 8px 0;"><strong>Croatia</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 13.8 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 77.3 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 4.5 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 47.2 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 13.8 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 2.5 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 25.2 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.1 mm/day</p>     </div>     </div>`)[0];
+                popup_29276ee50073055adbf6895b0c5007bb.setContent(html_7df3741fbafe9b11ed36c03284483944);
+            
+        
+
+        circle_marker_cd9e9add3f9bec9d94eca04b6fda80ce.bindPopup(popup_29276ee50073055adbf6895b0c5007bb)
+        ;
+
+        
+    
+    
+            circle_marker_cd9e9add3f9bec9d94eca04b6fda80ce.bindTooltip(
+                `<div>
+                     Dubrovnik - 13.8/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_70808b53a817c9bdf2981e82240a3779 = L.circleMarker(
+                [43.51, 16.44],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.2465, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_d3c0bc1b1543b1f9e48d15d171f01887 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ad73511419c36760b8b756b9b52b6d92 = $(`<div id="html_ad73511419c36760b8b756b9b52b6d92" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Split</h3>         <p style="margin: 0 0 8px 0;"><strong>Croatia</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 13.8 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 82.0 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 9.6 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 98.6 / 100 *****</p>         <p style="margin: 0;"><strong>Culture:</strong> 13.8 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 14.2 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 26.1 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.1 mm/day</p>     </div>     </div>`)[0];
+                popup_d3c0bc1b1543b1f9e48d15d171f01887.setContent(html_ad73511419c36760b8b756b9b52b6d92);
+            
+        
+
+        circle_marker_70808b53a817c9bdf2981e82240a3779.bindPopup(popup_d3c0bc1b1543b1f9e48d15d171f01887)
+        ;
+
+        
+    
+    
+            circle_marker_70808b53a817c9bdf2981e82240a3779.bindTooltip(
+                `<div>
+                     Split - 13.8/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_95ea51f8bea3b0c1b4bc95adb31dc326 = L.circleMarker(
+                [38.71, -9.14],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.7535, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_360c1aa7ea3e93ac8bfc6ffd58e681b5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b899096cab9e51e4fecb850495ff67a3 = $(`<div id="html_b899096cab9e51e4fecb850495ff67a3" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Lisbon</h3>         <p style="margin: 0 0 8px 0;"><strong>Portugal</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 86.2 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 71.9 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 77.6 / 100 ****.</p>         <p style="margin: 0;"><strong>Beach:</strong> 40.3 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 86.2 / 100 ****.</p>         <p style="margin: 0;"><strong>Nature:</strong> 59.2 / 100 ***..</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 22.5 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.3 mm/day</p>     </div>     </div>`)[0];
+                popup_360c1aa7ea3e93ac8bfc6ffd58e681b5.setContent(html_b899096cab9e51e4fecb850495ff67a3);
+            
+        
+
+        circle_marker_95ea51f8bea3b0c1b4bc95adb31dc326.bindPopup(popup_360c1aa7ea3e93ac8bfc6ffd58e681b5)
+        ;
+
+        
+    
+    
+            circle_marker_95ea51f8bea3b0c1b4bc95adb31dc326.bindTooltip(
+                `<div>
+                     Lisbon - 86.2/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9f9440b706f0c3df8082e0083de59844 = L.circleMarker(
+                [41.38, 2.18],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.6465, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_16eeffb02763649ede1da89b594225b7 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b111f173ae03ee32e654d53971dae0da = $(`<div id="html_b111f173ae03ee32e654d53971dae0da" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Barcelona</h3>         <p style="margin: 0 0 8px 0;"><strong>Spain</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 73.8 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 77.5 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 96.2 / 100 *****</p>         <p style="margin: 0;"><strong>Beach:</strong> 22.2 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 73.8 / 100 ****.</p>         <p style="margin: 0;"><strong>Nature:</strong> 100.0 / 100 *****</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 24.8 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.6 mm/day</p>     </div>     </div>`)[0];
+                popup_16eeffb02763649ede1da89b594225b7.setContent(html_b111f173ae03ee32e654d53971dae0da);
+            
+        
+
+        circle_marker_9f9440b706f0c3df8082e0083de59844.bindPopup(popup_16eeffb02763649ede1da89b594225b7)
+        ;
+
+        
+    
+    
+            circle_marker_9f9440b706f0c3df8082e0083de59844.bindTooltip(
+                `<div>
+                     Barcelona - 73.8/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2aecd2de83d8580a3f2598c97fc1a672 = L.circleMarker(
+                [43.7, 7.27],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.7307, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_2ad2f3bf2d7c8efe987bdbc519fc597e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_fb5c46ca3fd505dabde223330203031b = $(`<div id="html_fb5c46ca3fd505dabde223330203031b" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Nice</h3>         <p style="margin: 0 0 8px 0;"><strong>France</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 19.2 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 81.2 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 19.0 / 100 *....</p>         <p style="margin: 0;"><strong>Beach:</strong> 76.4 / 100 ****.</p>         <p style="margin: 0;"><strong>Culture:</strong> 19.2 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 17.1 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 24.6 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 0.8 mm/day</p>     </div>     </div>`)[0];
+                popup_2ad2f3bf2d7c8efe987bdbc519fc597e.setContent(html_fb5c46ca3fd505dabde223330203031b);
+            
+        
+
+        circle_marker_2aecd2de83d8580a3f2598c97fc1a672.bindPopup(popup_2ad2f3bf2d7c8efe987bdbc519fc597e)
+        ;
+
+        
+    
+    
+            circle_marker_2aecd2de83d8580a3f2598c97fc1a672.bindTooltip(
+                `<div>
+                     Nice - 19.2/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ce61ace27760f1d349ef798c748a85e3 = L.circleMarker(
+                [40.63, 14.6],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.7614, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_415094619ecc1875eba7d546516b4245 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3a498dcccde78645f2a109b77ba699d7 = $(`<div id="html_3a498dcccde78645f2a109b77ba699d7" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Amalfi</h3>         <p style="margin: 0 0 8px 0;"><strong>Italy</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 8.5 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 84.7 / 100 ****.</p>         <p style="margin: 0;"><strong>Food:</strong> 3.7 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 25.0 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 8.5 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 3.8 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 25.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.3 mm/day</p>     </div>     </div>`)[0];
+                popup_415094619ecc1875eba7d546516b4245.setContent(html_3a498dcccde78645f2a109b77ba699d7);
+            
+        
+
+        circle_marker_ce61ace27760f1d349ef798c748a85e3.bindPopup(popup_415094619ecc1875eba7d546516b4245)
+        ;
+
+        
+    
+    
+            circle_marker_ce61ace27760f1d349ef798c748a85e3.bindTooltip(
+                `<div>
+                     Amalfi - 8.5/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_010336c389a122d2f946686925248275 = L.circleMarker(
+                [44.15, 9.66],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.0386, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_f6e281bdf9c5925c40aedaec632b20fe = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_87ac6433ba108d0ff73c1c66dffa654d = $(`<div id="html_87ac6433ba108d0ff73c1c66dffa654d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Cinque Terre</h3>         <p style="margin: 0 0 8px 0;"><strong>Italy</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Warm Coastal & Beach</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 11.5 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 68.8 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 7.2 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 45.8 / 100 **...</p>         <p style="margin: 0;"><strong>Culture:</strong> 11.5 / 100 *....</p>         <p style="margin: 0;"><strong>Nature:</strong> 5.2 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 24.3 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.6 mm/day</p>     </div>     </div>`)[0];
+                popup_f6e281bdf9c5925c40aedaec632b20fe.setContent(html_87ac6433ba108d0ff73c1c66dffa654d);
+            
+        
+
+        circle_marker_010336c389a122d2f946686925248275.bindPopup(popup_f6e281bdf9c5925c40aedaec632b20fe)
+        ;
+
+        
+    
+    
+            circle_marker_010336c389a122d2f946686925248275.bindTooltip(
+                `<div>
+                     Cinque Terre - 11.5/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4dfc502c60d230c02a81b239e03cdeaa = L.circleMarker(
+                [46.69, 7.86],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.2079, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_f522ab765d46668349456a9111ccf75b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_bcaf209f836e9e46ddd4ad19fac70a29 = $(`<div id="html_bcaf209f836e9e46ddd4ad19fac70a29" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Interlaken</h3>         <p style="margin: 0 0 8px 0;"><strong>Switzerland</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Beach</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 2.3 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 29.5 / 100 *....</p>         <p style="margin: 0;"><strong>Food:</strong> 2.1 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 12.5 / 100 *....</p>         <p style="margin: 0;"><strong>Culture:</strong> 2.3 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 2.3 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.1 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 5.3 mm/day</p>     </div>     </div>`)[0];
+                popup_f522ab765d46668349456a9111ccf75b.setContent(html_bcaf209f836e9e46ddd4ad19fac70a29);
+            
+        
+
+        circle_marker_4dfc502c60d230c02a81b239e03cdeaa.bindPopup(popup_f522ab765d46668349456a9111ccf75b)
+        ;
+
+        
+    
+    
+            circle_marker_4dfc502c60d230c02a81b239e03cdeaa.bindTooltip(
+                `<div>
+                     Interlaken - 2.3/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_008c38b41292140f3b3e73d9ed52b9ce = L.circleMarker(
+                [46.02, 7.75],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.1386, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_b3087f30eeaa1780698cc30437873fb7 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_396c118664a0a391846856475e4752f3 = $(`<div id="html_396c118664a0a391846856475e4752f3" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Zermatt</h3>         <p style="margin: 0 0 8px 0;"><strong>Switzerland</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 1.5 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 20.9 / 100 *....</p>         <p style="margin: 0;"><strong>Food:</strong> 2.0 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 1.5 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.2 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 12.3 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.5 mm/day</p>     </div>     </div>`)[0];
+                popup_b3087f30eeaa1780698cc30437873fb7.setContent(html_396c118664a0a391846856475e4752f3);
+            
+        
+
+        circle_marker_008c38b41292140f3b3e73d9ed52b9ce.bindPopup(popup_b3087f30eeaa1780698cc30437873fb7)
+        ;
+
+        
+    
+    
+            circle_marker_008c38b41292140f3b3e73d9ed52b9ce.bindTooltip(
+                `<div>
+                     Zermatt - 1.5/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_97af4e816316311419780fc3a64440b3 = L.circleMarker(
+                [46.36, 14.09],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.0693, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_72d8cb6e2be75f4f5a489d6e341f0796 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b61c1ee1f2690d9911790d5740e5d7ba = $(`<div id="html_b61c1ee1f2690d9911790d5740e5d7ba" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Lake Bled</h3>         <p style="margin: 0 0 8px 0;"><strong>Slovenia</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 0.8 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 40.3 / 100 **...</p>         <p style="margin: 0;"><strong>Food:</strong> 1.2 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 2.8 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 0.8 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 0.5 / 100 .....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.4 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 3.5 mm/day</p>     </div>     </div>`)[0];
+                popup_72d8cb6e2be75f4f5a489d6e341f0796.setContent(html_b61c1ee1f2690d9911790d5740e5d7ba);
+            
+        
+
+        circle_marker_97af4e816316311419780fc3a64440b3.bindPopup(popup_72d8cb6e2be75f4f5a489d6e341f0796)
+        ;
+
+        
+    
+    
+            circle_marker_97af4e816316311419780fc3a64440b3.bindTooltip(
+                `<div>
+                     Lake Bled - 0.8/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_640742d0512a222667bfbacee8897064 = L.circleMarker(
+                [50.09, 14.42],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.238600000000002, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_306a0fdce179d28890eaec960141c558 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d3246ab3ce4a8bdbf2e2eaad836ed1e5 = $(`<div id="html_d3246ab3ce4a8bdbf2e2eaad836ed1e5" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Prague</h3>         <p style="margin: 0 0 8px 0;"><strong>Czech Republic</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 91.5 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 50.4 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 38.2 / 100 **...</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 91.5 / 100 *****</p>         <p style="margin: 0;"><strong>Nature:</strong> 23.5 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.2 mm/day</p>     </div>     </div>`)[0];
+                popup_306a0fdce179d28890eaec960141c558.setContent(html_d3246ab3ce4a8bdbf2e2eaad836ed1e5);
+            
+        
+
+        circle_marker_640742d0512a222667bfbacee8897064.bindPopup(popup_306a0fdce179d28890eaec960141c558)
+        ;
+
+        
+    
+    
+            circle_marker_640742d0512a222667bfbacee8897064.bindTooltip(
+                `<div>
+                     Prague - 91.5/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_557ba6bc47eb1490f3ab5b51c5b0cf1d = L.circleMarker(
+                [48.21, 16.37],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_1e38cc5ba9d0067663b92a58d7a9b5f9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_efc83526ccf1c667749242f9948c4cb1 = $(`<div id="html_efc83526ccf1c667749242f9948c4cb1" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Vienna</h3>         <p style="margin: 0 0 8px 0;"><strong>Austria</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 100.0 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 59.8 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 40.3 / 100 **...</p>         <p style="margin: 0;"><strong>Beach:</strong> 1.4 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 100.0 / 100 *****</p>         <p style="margin: 0;"><strong>Nature:</strong> 37.6 / 100 **...</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 22.0 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.9 mm/day</p>     </div>     </div>`)[0];
+                popup_1e38cc5ba9d0067663b92a58d7a9b5f9.setContent(html_efc83526ccf1c667749242f9948c4cb1);
+            
+        
+
+        circle_marker_557ba6bc47eb1490f3ab5b51c5b0cf1d.bindPopup(popup_1e38cc5ba9d0067663b92a58d7a9b5f9)
+        ;
+
+        
+    
+    
+            circle_marker_557ba6bc47eb1490f3ab5b51c5b0cf1d.bindTooltip(
+                `<div>
+                     Vienna - 100.0/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b433d139d849aa30d65f72cbb3834ad8 = L.circleMarker(
+                [47.48, 19.15],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.5535, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_d979e9bdf4a365e52583e3ebf9119d80 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4479701eb3e42ec09413341db2ae1862 = $(`<div id="html_4479701eb3e42ec09413341db2ae1862" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Budapest</h3>         <p style="margin: 0 0 8px 0;"><strong>Hungary</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Balanced</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 6.2 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 67.3 / 100 ***..</p>         <p style="margin: 0;"><strong>Food:</strong> 1.2 / 100 .....</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 6.2 / 100 .....</p>         <p style="margin: 0;"><strong>Nature:</strong> 13.0 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 23.3 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 1.8 mm/day</p>     </div>     </div>`)[0];
+                popup_d979e9bdf4a365e52583e3ebf9119d80.setContent(html_4479701eb3e42ec09413341db2ae1862);
+            
+        
+
+        circle_marker_b433d139d849aa30d65f72cbb3834ad8.bindPopup(popup_d979e9bdf4a365e52583e3ebf9119d80)
+        ;
+
+        
+    
+    
+            circle_marker_b433d139d849aa30d65f72cbb3834ad8.bindTooltip(
+                `<div>
+                     Budapest - 6.2/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_41a1491cf7bed3e726e8f78a1b2bc63f = L.circleMarker(
+                [48.86, 2.32],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.784199999999998, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_46d2eba0316704a6fa5b028113924af0 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4325ab444320b5606de75c8757131136 = $(`<div id="html_4325ab444320b5606de75c8757131136" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Paris</h3>         <p style="margin: 0 0 8px 0;"><strong>France</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Urban Culture & Food</p>         <p style="margin: 0;"><strong>Travel style:</strong> Food & Nightlife</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 75.4 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 41.8 / 100 **...</p>         <p style="margin: 0;"><strong>Food:</strong> 100.0 / 100 *****</p>         <p style="margin: 0;"><strong>Beach:</strong> 0.0 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 75.4 / 100 ****.</p>         <p style="margin: 0;"><strong>Nature:</strong> 24.0 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 20.0 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.9 mm/day</p>     </div>     </div>`)[0];
+                popup_46d2eba0316704a6fa5b028113924af0.setContent(html_4325ab444320b5606de75c8757131136);
+            
+        
+
+        circle_marker_41a1491cf7bed3e726e8f78a1b2bc63f.bindPopup(popup_46d2eba0316704a6fa5b028113924af0)
+        ;
+
+        
+    
+    
+            circle_marker_41a1491cf7bed3e726e8f78a1b2bc63f.bindTooltip(
+                `<div>
+                     Paris - 75.4/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ea8c6b0d373d71e678c8201bd0834021 = L.circleMarker(
+                [52.37, 4.89],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.72, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.122800000000002, "stroke": true, "weight": 2}
+            ).addTo(feature_group_ef3ef3cceb599948b211419ed3d185a1);
+        
+    
+        var popup_8290701f177004966ae5ee3a73a0e232 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_d0544903a0aa82384ef5229ff4a69aeb = $(`<div id="html_d0544903a0aa82384ef5229ff4a69aeb" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; min-width: 230px;">         <h3 style="margin: 0 0 6px 0;">Amsterdam</h3>         <p style="margin: 0 0 8px 0;"><strong>Netherlands</strong></p>         <p style="margin: 0;"><strong>Cluster:</strong> Cool Balanced & Nature</p>         <p style="margin: 0;"><strong>Travel style:</strong> Culture</p>         <hr>         <p style="margin: 0;"><strong>Culture Score:</strong> 56.9 / 100</p>         <p style="margin: 0;"><strong>Weather:</strong> 30.1 / 100 **...</p>         <p style="margin: 0;"><strong>Food:</strong> 35.5 / 100 **...</p>         <p style="margin: 0;"><strong>Beach:</strong> 1.4 / 100 .....</p>         <p style="margin: 0;"><strong>Culture:</strong> 56.9 / 100 ***..</p>         <p style="margin: 0;"><strong>Nature:</strong> 14.5 / 100 *....</p>         <hr>         <p style="margin: 0;"><strong>Summer temp:</strong> 17.7 C</p>         <p style="margin: 0;"><strong>Summer rain:</strong> 2.6 mm/day</p>     </div>     </div>`)[0];
+                popup_8290701f177004966ae5ee3a73a0e232.setContent(html_d0544903a0aa82384ef5229ff4a69aeb);
+            
+        
+
+        circle_marker_ea8c6b0d373d71e678c8201bd0834021.bindPopup(popup_8290701f177004966ae5ee3a73a0e232)
+        ;
+
+        
+    
+    
+            circle_marker_ea8c6b0d373d71e678c8201bd0834021.bindTooltip(
+                `<div>
+                     Amsterdam - 56.9/100
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_6b754fea90fda013bd829936c6dc6fc9_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_a19676d729c3294b95f3237152d6a3af,
+                },
+                overlays :  {
+                    "Summer Weather Score" : feature_group_e8551daba3508be2bb49f60f856861f1,
+                    "Beach Score" : feature_group_30ea67e023901dbd992d1ae6c69634fe,
+                    "Culture Score" : feature_group_ef3ef3cceb599948b211419ed3d185a1,
+                },
+            };
+            let layer_control_6b754fea90fda013bd829936c6dc6fc9 = L.control.layers(
+                layer_control_6b754fea90fda013bd829936c6dc6fc9_layers.base_layers,
+                layer_control_6b754fea90fda013bd829936c6dc6fc9_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_96e32fa37fc6128c28763bbae9ad00b6);
+
+        
+</script>
+</html>

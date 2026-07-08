@@ -1,0 +1,21 @@
+destination_name,search_name,country,destination_type,latitude,longitude
+Kefalonia,Argostoli,Greece,island,38.1756733,20.4878796
+Santorini,Santorini,Greece,island,36.4071112,25.4566637
+Funchal,Funchal,Portugal,island,32.6496497,-16.9086783
+Mallorca,Palma de Mallorca,Spain,island,39.5695818,2.6500745
+Sardinia,Cagliari,Italy,island,39.2171994,9.113311
+Dubrovnik,Dubrovnik,Croatia,coastal_city,42.6491029,18.0939501
+Split,Split,Croatia,coastal_city,43.5116383,16.4399659
+Lisbon,Lisbon,Portugal,coastal_city,38.7077507,-9.1365919
+Barcelona,Barcelona,Spain,coastal_city,41.3825802,2.177073
+Nice,Nice,France,coastal_city,43.7009358,7.2683912
+Amalfi,Amalfi,Italy,coastal_city,40.63367,14.6026095
+Cinque Terre,Monterosso al Mare,Italy,region,44.1465216,9.6555583
+Interlaken,Interlaken,Switzerland,mountain,46.6855231,7.8585139
+Zermatt,Zermatt,Switzerland,mountain,46.0212076,7.749254
+Lake Bled,Lake Bled,Slovenia,mountain,46.3639132,14.0938069
+Prague,Prague,Czech Republic,city,50.0874654,14.4212535
+Vienna,Vienna,Austria,city,48.2083537,16.3725042
+Budapest,Budapest,Hungary,city,47.4813896,19.1457723
+Paris,Paris,France,city,48.8588897,2.320041
+Amsterdam,Amsterdam,Netherlands,city,52.3730796,4.8924534

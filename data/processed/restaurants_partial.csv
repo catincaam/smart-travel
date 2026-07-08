@@ -1,0 +1,9 @@
+destination_name,country,destination_type,restaurant_count
+Kefalonia,Greece,island,0
+Santorini,Greece,island,88
+Funchal,Portugal,island,326
+Mallorca,Spain,island,0
+Sardinia,Italy,island,0
+Dubrovnik,Croatia,coastal_city,170
+Split,Croatia,coastal_city,199
+Lisbon,Portugal,coastal_city,1734

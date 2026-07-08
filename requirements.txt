@@ -1,0 +1,13 @@
+pandas
+requests
+fastapi
+uvicorn
+streamlit
+matplotlib
+seaborn
+folium
+scikit-learn
+scipy
+notebook
+ipykernel
+pytest
