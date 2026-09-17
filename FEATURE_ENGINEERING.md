@@ -113,6 +113,31 @@ Current implementation note: budget support is functional in V1, but
 The richer `travel_cost_index` is prepared for V2 and requires live Numbeo and
 Amadeus API credentials.
 
+## Travel Companion Fit
+
+The dashboard asks who the user is travelling with. This is not only a visual
+choice: it affects the recommendation system.
+
+The answer is used in two layers:
+
+1. Preference translation adjusts the internal food, beach, culture, nature,
+   and nightlife preferences.
+2. The recommender calculates a separate `companion_match_score` for each
+   destination.
+
+Examples:
+
+| Companion | Stronger destination fit |
+| --- | --- |
+| `Solo` | Culture, food, nature, comfortable weather |
+| `Partner` | Beach, food, weather, coastal/nature profiles |
+| `Friends` | Nightlife, food, beach, city/coastal profiles |
+| `Family` | Nature, culture, comfortable weather, lower nightlife intensity |
+
+In the V1 recommendation formula, `companion_match_score` contributes 10% to
+the final score. This makes the travel context visible without overpowering the
+user's explicit trip preferences.
+
 The V1 budget match is intentionally gradual:
 
 | User budget preference | Budget destination | Mid-range destination | Luxury destination |

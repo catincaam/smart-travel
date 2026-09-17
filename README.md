@@ -117,6 +117,8 @@ Example request:
   "nightlife": 4,
   "month": "August",
   "budget": "Medium (Comfort)",
+  "weather_preference": "Warm",
+  "companion": "Partner",
   "top_n": 5
 }
 ```
@@ -146,13 +148,20 @@ the same as exact tourist spending or seasonal hotel prices. Budget currently
 contributes 15% to the recommendation score, so selecting Low / Medium / High
 can change the ranking without completely overriding travel preferences.
 
+The recommender also calculates `companion_match_score`, which measures how
+well each destination fits the travel context selected by the user (`Solo`,
+`Partner`, `Friends`, or `Family`). For example, partner trips favor beach,
+food, weather, and relaxed coastal/nature profiles, while trips with friends
+favor nightlife, food, and city/coastal profiles.
+
 The V1 formula is:
 
 ```text
 recommendation_score =
-    0.60 * preference_score
+    0.55 * preference_score
   + 0.20 * weather_score
   + 0.15 * cost_score
+  + 0.10 * companion_match_score
   + cluster_bonus
   - must_have_penalty
 ```
@@ -295,6 +304,13 @@ across many hard-coded `if` statements.
 
 Those signals are then passed to `src/recommend.py`, which calculates the final
 recommendations.
+
+The companion answer is used in two ways:
+
+- it adjusts the internal preference signals before scoring;
+- it also creates a separate `companion_match_score`, so the recommendation
+  engine can explicitly evaluate whether a destination is good for solo travel,
+  partner travel, trips with friends, or family travel.
 
 The free-text field uses lightweight keyword extraction with synonyms and simple
 typo tolerance. For example, `warm beach with good food` increases the beach and

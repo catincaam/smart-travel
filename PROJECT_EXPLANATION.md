@@ -805,6 +805,7 @@ Motorul foloseste mai multe componente:
 preference_score
 weather_score
 cost_score
+companion_match_score
 cluster_bonus
 must_have_penalty
 ```
@@ -813,9 +814,10 @@ Formula V1:
 
 ```text
 recommendation_score =
-    0.60 * preference_score
+    0.55 * preference_score
   + 0.20 * weather_score
   + 0.15 * cost_score
+  + 0.10 * companion_match_score
   + cluster_bonus
   - must_have_penalty
 ```

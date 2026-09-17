@@ -62,6 +62,61 @@ WEATHER_COMFORT_PROFILES = {
     "cool": {"ideal_temp": 15, "tolerance": 4},
 }
 
+COMPANION_PROFILES = {
+    "Solo": {
+        "signals": {
+            "culture_recommendation_signal": 0.35,
+            "food_recommendation_signal": 0.25,
+            "nature_recommendation_signal": 0.20,
+            "weather_score": 0.20,
+        },
+        "profile_bonus": {
+            "Urban Culture & Food": 8,
+            "Cool Balanced & Nature": 6,
+        },
+        "label": "solo travel",
+    },
+    "Partner": {
+        "signals": {
+            "beach_recommendation_signal": 0.30,
+            "food_recommendation_signal": 0.25,
+            "weather_score": 0.25,
+            "nature_recommendation_signal": 0.20,
+        },
+        "profile_bonus": {
+            "Warm Coastal & Beach": 8,
+            "Cool Balanced & Nature": 4,
+        },
+        "label": "partner travel",
+    },
+    "Friends": {
+        "signals": {
+            "nightlife_recommendation_signal": 0.35,
+            "food_recommendation_signal": 0.25,
+            "beach_recommendation_signal": 0.20,
+            "weather_score": 0.20,
+        },
+        "profile_bonus": {
+            "Urban Culture & Food": 8,
+            "Warm Coastal & Beach": 5,
+        },
+        "label": "trips with friends",
+    },
+    "Family": {
+        "signals": {
+            "nature_recommendation_signal": 0.30,
+            "culture_recommendation_signal": 0.25,
+            "weather_score": 0.25,
+            "low_nightlife_signal": 0.20,
+        },
+        "profile_bonus": {
+            "Cool Balanced & Nature": 8,
+            "Warm Coastal & Beach": 4,
+        },
+        "label": "family travel",
+    },
+}
+
 
 def clamp(value, minimum=0, maximum=100):
     return max(minimum, min(maximum, value))
@@ -218,6 +273,22 @@ def calculate_budget_match_score(row, budget):
     return budget_scores.get(cost_level, 70)
 
 
+def calculate_companion_match_score(row, companion):
+    """Score how well a destination fits the travel companion context."""
+    profile = COMPANION_PROFILES.get(companion, COMPANION_PROFILES["Partner"])
+    score = 0
+
+    for signal, weight in profile["signals"].items():
+        if signal == "low_nightlife_signal":
+            signal_score = 100 - row["nightlife_recommendation_signal"]
+        else:
+            signal_score = row.get(signal, 0)
+        score += signal_score * weight
+
+    score += profile["profile_bonus"].get(row.get("cluster_profile", ""), 0)
+    return round(clamp(score), 2)
+
+
 def calculate_cluster_bonus(row, preferences):
     profile = row.get("cluster_profile", "")
 
@@ -287,6 +358,7 @@ def build_reason(row):
     return {
         "weather": round(row["weather_score"], 2),
         "budget": round(row["budget_match_score"], 2),
+        "companion": round(row["companion_match_score"], 2),
         "food": round(row["food_recommendation_signal"], 2),
         "beach": round(row["beach_recommendation_signal"], 2),
         "culture": round(row["culture_recommendation_signal"], 2),
@@ -297,7 +369,12 @@ def build_reason(row):
     }
 
 
-def build_natural_reason(row, preferences, season, budget):
+def companion_strength_text(companion):
+    profile = COMPANION_PROFILES.get(companion, COMPANION_PROFILES["Partner"])
+    return profile["label"]
+
+
+def build_natural_reason(row, preferences, season, budget, companion):
     main_preferences = [
         preference_name
         for preference_name, preference_value in preferences.items()
@@ -323,6 +400,8 @@ def build_natural_reason(row, preferences, season, budget):
         strengths.append("good nightlife")
     if row["budget_match_score"] >= 80:
         strengths.append(f"a {row.get('cost_level', 'balanced')} cost profile")
+    if row["companion_match_score"] >= 75:
+        strengths.append(f"a strong fit for {companion_strength_text(companion)}")
 
     if not strengths:
         strengths.append("a balanced profile across the selected criteria")
@@ -341,6 +420,7 @@ def recommend_destinations(
     top_n=5,
     budget="Medium (Comfort)",
     weather_preference="Any",
+    companion="Partner",
 ):
     destinations = load_destinations()
     season = season_from_month(travel_month)
@@ -368,6 +448,10 @@ def recommend_destinations(
         axis=1,
     )
     recommendations["cost_score"] = recommendations["budget_match_score"]
+    recommendations["companion_match_score"] = recommendations.apply(
+        lambda row: calculate_companion_match_score(row, companion),
+        axis=1,
+    )
     recommendations["cluster_bonus"] = recommendations.apply(
         lambda row: calculate_cluster_bonus(row, preferences),
         axis=1,
@@ -377,9 +461,10 @@ def recommend_destinations(
         axis=1,
     )
     recommendations["recommendation_score"] = (
-        (0.60 * recommendations["preference_score"])
+        (0.55 * recommendations["preference_score"])
         + (0.20 * recommendations["weather_score"])
         + (0.15 * recommendations["cost_score"])
+        + (0.10 * recommendations["companion_match_score"])
         + recommendations["cluster_bonus"]
         - recommendations["must_have_penalty"]
     ).round(2)
@@ -392,7 +477,7 @@ def recommend_destinations(
     )
     recommendations["reason"] = recommendations.apply(build_reason, axis=1)
     recommendations["natural_reason"] = recommendations.apply(
-        lambda row: build_natural_reason(row, preferences, season, budget),
+        lambda row: build_natural_reason(row, preferences, season, budget, companion),
         axis=1,
     )
 
@@ -404,6 +489,7 @@ def recommend_destinations(
         "weather_score",
         "cost_score",
         "budget_match_score",
+        "companion_match_score",
         "cost_of_living_index",
         "cost_level",
         "cluster_profile",
@@ -450,6 +536,12 @@ def parse_args():
         choices=["Warm", "Mild", "Cool", "Any"],
         help="Preferred weather for the selected travel month.",
     )
+    parser.add_argument(
+        "--companion",
+        default="Partner",
+        choices=list(COMPANION_PROFILES),
+        help="Who the user is travelling with.",
+    )
     parser.add_argument("--top-n", type=int, default=5, help="Number of results.")
 
     return parser.parse_args()
@@ -471,6 +563,7 @@ def main():
         top_n=args.top_n,
         budget=args.budget,
         weather_preference=args.weather_preference,
+        companion=args.companion,
     )
     recommendations.to_csv(OUTPUT_PATH, index=False)
 
@@ -478,6 +571,7 @@ def main():
     print(f"Travel month: {args.month}")
     print(f"Budget: {args.budget}")
     print(f"Weather preference: {args.weather_preference}")
+    print(f"Companion: {args.companion}")
     print("Preferences:", preferences)
     print()
     print(recommendations.to_string(index=False))

@@ -33,7 +33,12 @@ does not confuse visual UI elements with fully supported data features.
 - Content-based recommendation engine:
   - `src/recommend.py`
   - uses translated preference signals, weather score, budget match score,
-    cluster bonus, and must-have penalties.
+    travel companion fit, cluster bonus, and must-have penalties.
+- Travel companion fit:
+  - creates `companion_match_score`;
+  - supports Solo, Partner, Friends, and Family contexts;
+  - contributes 10% to the final recommendation score;
+  - appears in dashboard explanations as travel fit.
 - Budget support V1:
   - uses `cost_of_living_index` as an affordability proxy;
   - derives `cost_level`;

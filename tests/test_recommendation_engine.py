@@ -2,6 +2,7 @@ import pandas as pd
 
 from src.recommend import (
     calculate_budget_match_score,
+    calculate_companion_match_score,
     recommend_destinations,
     temperature_comfort_score,
 )
@@ -39,10 +40,33 @@ def test_recommendations_include_cost_score_and_top_n():
         top_n=3,
         budget="Medium (Comfort)",
         weather_preference="Warm",
+        companion="Partner",
     )
 
     assert len(recommendations) == 3
     assert "cost_score" in recommendations.columns
     assert "budget_match_score" in recommendations.columns
+    assert "companion_match_score" in recommendations.columns
     assert recommendations["recommendation_score"].between(0, 100).all()
     assert recommendations["cost_score"].equals(recommendations["budget_match_score"])
+
+
+def test_companion_match_score_uses_different_travel_contexts():
+    destination = pd.Series(
+        {
+            "food_recommendation_signal": 70,
+            "beach_recommendation_signal": 90,
+            "culture_recommendation_signal": 40,
+            "nature_recommendation_signal": 80,
+            "nightlife_recommendation_signal": 20,
+            "weather_score": 85,
+            "cluster_profile": "Warm Coastal & Beach",
+        }
+    )
+
+    partner_score = calculate_companion_match_score(destination, "Partner")
+    friends_score = calculate_companion_match_score(destination, "Friends")
+    family_score = calculate_companion_match_score(destination, "Family")
+
+    assert partner_score > friends_score
+    assert family_score > friends_score

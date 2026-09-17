@@ -743,6 +743,9 @@ def tag_from_reason(row):
     elif reason["weather"] >= 60:
         tags.append("Good weather")
 
+    if reason.get("companion", 0) >= 80:
+        tags.append("Great travel fit")
+
     if reason["nature"] >= 80:
         tags.append("Nature escapes")
     elif reason["culture"] >= 80:
@@ -946,6 +949,7 @@ def render_reason_scores(reason):
     score_columns = st.columns(3)
     visible_scores = [
         ("Weather", reason["weather"]),
+        ("Travel fit", reason["companion"]),
         ("Food", reason["food"]),
         ("Beach", reason["beach"]),
         ("Culture", reason["culture"]),
@@ -1022,7 +1026,8 @@ def render_recommendation_card(row, rank, destinations, companion, budget):
         st.caption(
             f"Preference score: {format_score(row['preference_score'])} - "
             f"Weather score: {format_score(row['weather_score'])} - "
-            f"Cost score: {format_score(row.get('cost_score', row['budget_match_score']))}"
+            f"Cost score: {format_score(row.get('cost_score', row['budget_match_score']))} - "
+            f"Travel fit: {format_score(row['companion_match_score'])}"
         )
 
 
@@ -1151,6 +1156,7 @@ def main():
         top_n=top_n,
         budget=budget,
         weather_preference=effective_weather_preference,
+        companion=companion,
     )
     recommendations = enrich_recommendations_with_facts(recommendations, destinations)
 

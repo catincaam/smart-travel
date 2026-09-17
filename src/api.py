@@ -33,6 +33,10 @@ class RecommendationRequest(BaseModel):
         default="Any",
         description="Preferred weather: Warm, Mild, Cool, or Any.",
     )
+    companion: str = Field(
+        default="Partner",
+        description="Who the user is travelling with: Solo, Partner, Friends, or Family.",
+    )
     top_n: int = Field(default=5, ge=1, le=20, description="Number of results.")
 
 
@@ -44,6 +48,7 @@ class RecommendationResult(BaseModel):
     weather_score: float
     cost_score: float
     budget_match_score: float
+    companion_match_score: float
     cost_of_living_index: float
     cost_level: str
     cluster_profile: str
@@ -60,6 +65,7 @@ class RecommendationResponse(BaseModel):
     preferences: dict
     budget: str
     weather_preference: str
+    companion: str
     recommendations: List[RecommendationResult]
 
 
@@ -90,6 +96,7 @@ def recommend(request: RecommendationRequest):
             top_n=request.top_n,
             budget=request.budget,
             weather_preference=request.weather_preference,
+            companion=request.companion,
         )
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error)) from error
@@ -100,5 +107,6 @@ def recommend(request: RecommendationRequest):
         "preferences": preferences,
         "budget": request.budget,
         "weather_preference": request.weather_preference,
+        "companion": request.companion,
         "recommendations": recommendations.to_dict(orient="records"),
     }
