@@ -166,377 +166,7 @@ st.set_page_config(
 )
 
 st.markdown(
-    """
-    <style>
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #fffaf8 0%, #fbf7f5 100%);
-        border-right: 1px solid #f0ded8;
-    }
-    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p {
-        color: #6b5751;
-    }
-    [data-testid="stSidebar"] h1,
-    [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3 {
-        color: #2b2421;
-    }
-    [data-testid="stSidebar"] button[kind="primary"] {
-        background: #fff3ef;
-        border: 1.5px solid #c72512;
-        color: #c72512;
-        border-radius: 12px;
-        font-weight: 700;
-        box-shadow: 0 8px 18px rgba(199, 37, 18, 0.08);
-    }
-    [data-testid="stSidebar"] button[kind="secondary"] {
-        background: #fffdfc;
-        border: 1px solid #ead8d1;
-        color: #433633;
-        border-radius: 12px;
-    }
-    .planner-brand {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 4px 0 14px 0;
-        border-bottom: 1px solid #f1dfd9;
-        margin-bottom: 22px;
-    }
-    .planner-logo {
-        color: #c72512;
-        font-size: 20px;
-        font-weight: 800;
-    }
-    .planner-avatar {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #f7c6b8, #fff3ef);
-        border: 1px solid #ead8d1;
-    }
-    .planner-title {
-        font-size: 24px;
-        font-weight: 800;
-        color: #292321;
-        margin-bottom: 8px;
-    }
-    .planner-copy {
-        color: #7b6962;
-        font-size: 14px;
-        line-height: 1.5;
-        margin-bottom: 24px;
-    }
-    .sidebar-label {
-        color: #6f5b55;
-        font-size: 14px;
-        font-weight: 600;
-        margin: 18px 0 8px 0;
-    }
-    .hero-card {
-        min-height: 260px;
-        padding: 30px 28px;
-        border-radius: 22px;
-        background:
-            linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,255,255,0.68)),
-            url("https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1400&q=75");
-        background-size: cover;
-        background-position: center;
-        border: 1px solid #f1dfd9;
-        box-shadow: 0 16px 35px rgba(80, 45, 30, 0.08);
-        margin-bottom: 24px;
-    }
-    .hero-pill {
-        display: inline-flex;
-        padding: 5px 10px;
-        border-radius: 999px;
-        background: #fff3ee;
-        color: #c72512;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: 0.04em;
-        margin-bottom: 18px;
-    }
-    .hero-title {
-        font-size: 40px;
-        line-height: 1.05;
-        font-weight: 800;
-        color: #171312;
-        margin-bottom: 18px;
-        max-width: 560px;
-    }
-    .hero-copy {
-        color: #5f4f49;
-        max-width: 560px;
-        font-size: 16px;
-        line-height: 1.6;
-    }
-    .stat-card {
-        background: #fffdfc;
-        border: 1px solid #f0dfd9;
-        border-radius: 16px;
-        padding: 20px;
-        min-height: 112px;
-        box-shadow: 0 14px 26px rgba(70, 43, 33, 0.06);
-    }
-    .stat-value {
-        font-size: 30px;
-        font-weight: 800;
-        color: #2b2421;
-        margin-top: 8px;
-    }
-    .stat-label {
-        color: #6b5751;
-        font-size: 13px;
-        font-weight: 600;
-    }
-    .section-heading {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 24px 0 12px 0;
-    }
-    .section-heading h2 {
-        margin: 0;
-        font-size: 26px;
-        color: #15110f;
-    }
-    .section-link {
-        color: #c72512;
-        font-weight: 700;
-        font-size: 14px;
-    }
-    .destination-card {
-        display: grid;
-        grid-template-columns: minmax(260px, 35%) minmax(0, 1fr);
-        height: 330px;
-        overflow: hidden;
-        border-radius: 22px;
-        background: #fffdfc;
-        border: 1px solid #f0dfd9;
-        box-shadow: 0 18px 40px rgba(70, 43, 33, 0.10);
-        margin-bottom: 26px;
-    }
-    .destination-image-wrap {
-        position: relative;
-        height: 330px;
-        overflow: hidden;
-        background: #f5eee9;
-    }
-    .destination-image {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-    }
-    .destination-photo {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    .destination-image-gradient {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0.02) 35%, rgba(0,0,0,0.58) 100%);
-    }
-    .destination-image-overlay {
-        position: absolute;
-        left: 22px;
-        right: 22px;
-        bottom: 20px;
-        color: #fff;
-        text-shadow: 0 2px 12px rgba(0,0,0,0.35);
-    }
-    .destination-image-name {
-        font-size: 24px;
-        font-weight: 850;
-        line-height: 1.1;
-    }
-    .destination-image-country {
-        font-size: 13px;
-        font-weight: 700;
-        opacity: 0.92;
-        margin-top: 4px;
-    }
-    .rating-badge {
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        background: rgba(255,255,255,0.94);
-        color: #2e241f;
-        border-radius: 999px;
-        padding: 7px 12px;
-        font-weight: 800;
-        font-size: 14px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    }
-    .destination-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-width: 0;
-        padding: 24px 30px;
-    }
-    .destination-topline {
-        display: flex;
-        justify-content: space-between;
-        gap: 18px;
-        align-items: flex-start;
-    }
-    .destination-title {
-        font-size: 24px;
-        font-weight: 850;
-        color: #15110f;
-        margin: 0;
-    }
-    .destination-subtitle {
-        color: #7a3427;
-        font-size: 14px;
-        font-weight: 600;
-        margin-top: 4px;
-    }
-    .match-ring {
-        width: 76px;
-        height: 76px;
-        border-radius: 50%;
-        background:
-            radial-gradient(circle at center, #fff 55%, transparent 57%),
-            conic-gradient(#ff5a45 var(--pct), #f2e2dc 0);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-weight: 800;
-        color: #2e241f;
-        flex: 0 0 auto;
-    }
-    .match-ring span {
-        line-height: 1;
-    }
-    .match-ring small {
-        color: #84675f;
-        font-size: 10px;
-        font-weight: 800;
-        margin-top: 4px;
-        text-transform: uppercase;
-    }
-    .destination-reason {
-        color: #533f38;
-        font-size: 14px;
-        line-height: 1.55;
-        margin: 14px 0 14px 0;
-        max-width: 820px;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    .destination-facts {
-        display: grid;
-        grid-template-columns: repeat(5, minmax(116px, 1fr));
-        gap: 8px;
-        margin: 16px 0 12px 0;
-    }
-    .fact-pill {
-        background: #fffaf7;
-        border: 1px solid #f3d8cf;
-        border-radius: 14px;
-        padding: 10px 11px;
-        min-height: 76px;
-    }
-    .fact-value {
-        color: #1f1916;
-        font-size: 14px;
-        font-weight: 850;
-        line-height: 1.1;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-    }
-    .fact-label {
-        color: #80675f;
-        font-size: 11px;
-        font-weight: 700;
-        margin-top: 4px;
-    }
-    .fact-meta {
-        color: #a48a82;
-        font-size: 10px;
-        font-weight: 700;
-        margin-top: 3px;
-    }
-    .signal-excellent {
-        background: #f0fbf5;
-        border-color: #bfe8cf;
-    }
-    .signal-high {
-        background: #f2f7ff;
-        border-color: #c8dcff;
-    }
-    .signal-moderate {
-        background: #fff8e6;
-        border-color: #f1d89a;
-    }
-    .signal-limited,
-    .signal-low {
-        background: #f8f7f6;
-        border-color: #ded7d2;
-    }
-    .tag-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 0;
-    }
-    .travel-tag {
-        color: #c72512;
-        background: #fff1ed;
-        border: 1px solid #ffd8cf;
-        border-radius: 999px;
-        padding: 7px 11px;
-        font-size: 12px;
-        font-weight: 800;
-    }
-    @media (max-width: 900px) {
-        .destination-card {
-            grid-template-columns: 1fr;
-            height: auto;
-        }
-        .destination-image-wrap {
-            height: 260px;
-        }
-        .destination-body {
-            padding: 26px 24px;
-        }
-        .destination-facts {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-    }
-    .concierge-card {
-        border: 1px solid #4e67df;
-        background: linear-gradient(135deg, #fff7f4, #f5f7ff);
-        border-radius: 20px;
-        padding: 22px;
-        margin: 26px 0;
-    }
-    .concierge-title {
-        font-weight: 850;
-        font-size: 18px;
-        color: #2b2421;
-    }
-    .concierge-copy {
-        color: #6b5751;
-        font-size: 14px;
-        margin-top: 4px;
-    }
-    </style>
-    """,
+    "<style>" + (PROJECT_ROOT / "dashboard" / "styles.css").read_text() + "</style>",
     unsafe_allow_html=True,
 )
 
@@ -978,9 +608,7 @@ def render_recommendation_card(row, rank, destinations, companion, budget):
         for level, label, meta in recommendation_facts(row)
     )
     image_url = destination_image(row)
-    fallback_image_url = fallback_destination_image(row)
     profile_label = friendly_cluster_profile(row)
-    rating = destination_rating(row)
     match_percent = int(round(row["recommendation_score"]))
     ring_degrees = f"{match_percent}%"
 
@@ -999,7 +627,7 @@ def render_recommendation_card(row, rank, destinations, companion, budget):
                     <div class="destination-image-name">{row['destination_name']}</div>
                     <div class="destination-image-country">{row['country']}</div>
                 </div>
-                <div class="rating-badge">* {rating:.1f}</div>
+                <div class="rating-badge">No. {rank:02d} · Your shortlist</div>
             </div>
             <div class="destination-body">
                 <div class="destination-topline">
@@ -1009,7 +637,7 @@ def render_recommendation_card(row, rank, destinations, companion, budget):
                     </div>
                     <div class="match-ring" style="--pct: {ring_degrees};">
                         <span>{match_percent}%</span>
-                        <small>AI Match</small>
+                        <small>Match</small>
                     </div>
                 </div>
                 <div class="destination-facts">{facts}</div>
@@ -1044,25 +672,15 @@ def render_map():
 
 
 def render_hero(month, destination_count):
+    hero_image = local_image_data_url("mallorca.jpg")
     st.markdown(
         f"""
-        <div class="hero-card">
-            <div class="hero-pill">AI POWERED</div>
-            <div class="hero-title">Plan Your Next Trip</div>
-            <div class="hero-copy">
-                Discover destinations using weather, points of interest,
-                geospatial data and machine learning.
-            </div>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 24px;">
-            <div class="stat-card">
-                <div class="stat-value">{destination_count}</div>
-                <div class="stat-label">Destinations Analyzed</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">{month}</div>
-                <div class="stat-label">Selected Month</div>
-            </div>
+        <div class="page-masthead"><span>SMART TRAVEL / THE DESTINATION EDIT</span><span>Made for your kind of escape</span></div>
+        <div class="hero-card" style="background-image: linear-gradient(90deg, rgba(16,42,35,.88), rgba(16,42,35,.12)), url('{hero_image}');">
+            <div class="hero-pill">A LITTLE INSPIRATION. A NEW ADVENTURE.</div>
+            <h1 class="hero-title">Somewhere new.<br>Something you.</h1>
+            <div class="hero-copy">Find a place that feels like your kind of trip.<br>Great food, slower days, or a little adventure — you decide.</div>
+            <div class="hero-footer"><span>{destination_count} European destinations</span><span>Your {month} escape</span></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -1078,12 +696,11 @@ def main():
             """
             <div class="planner-brand">
                 <div class="planner-logo">Smart Travel</div>
-                <div class="planner-avatar"></div>
+                <div class="planner-avatar" aria-hidden="true">↗</div>
             </div>
-            <div class="planner-title">Plan Your Next Trip</div>
+            <div class="planner-title">Your next escape</div>
             <div class="planner-copy">
-                Tell us what you are looking for, and Smart Travel will craft
-                a destination shortlist for your trip.
+                A few details about you. A world of places to discover.
             </div>
             """,
             unsafe_allow_html=True,
@@ -1162,36 +779,26 @@ def main():
 
     render_hero(month, len(destinations))
 
-    with st.expander("How your answers were translated"):
-        st.json(
-            {
-                "preferences": preferences,
-                "weather_preference": effective_weather_preference,
-            }
-        )
-
-    st.divider()
-
     results_tab, map_tab, data_tab = st.tabs(["Recommendations", "Interactive Map", "Dataset"])
 
     with results_tab:
         st.markdown(
             """
             <div class="section-heading">
-                <h2>Recommended</h2>
-                <div class="section-link">View All</div>
+                <div><div class="eyebrow">CURATED FOR YOU</div><h2>Places you could fall for</h2></div>
+                <div class="section-link">Explore your shortlist ↓</div>
             </div>
             """,
             unsafe_allow_html=True,
         )
-        for index, row in recommendations.iterrows():
-            render_recommendation_card(row, index + 1, destinations, companion, budget)
+        for rank, (_, row) in enumerate(recommendations.iterrows(), start=1):
+            render_recommendation_card(row, rank, destinations, companion, budget)
         st.markdown(
             """
             <div class="concierge-card">
-                <div class="concierge-title">AI Concierge Ready</div>
+                <div class="concierge-title">Make it your own</div>
                 <div class="concierge-copy">
-                    Ask me anything about your trip to the recommended destinations.
+                    Adjust your travel style, weather or budget in the planner to discover a different side of Europe.
                 </div>
             </div>
             """,
@@ -1205,6 +812,8 @@ def main():
 
     with data_tab:
         st.header("Destination Dataset")
+        with st.expander("How your answers were translated"):
+            st.json({"preferences": preferences, "weather_preference": effective_weather_preference})
         st.dataframe(
             destinations[
                 [

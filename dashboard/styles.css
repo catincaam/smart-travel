@@ -1,0 +1,60 @@
+/* Shared visual language for the travel planner. */
+.stApp { background: #f8f7f2; color: #243e35; }
+.block-container { max-width: 1440px; padding-top: 2rem; }
+[data-testid="stHeader"] { background: #f8f7f2; }
+[data-testid="stSidebar"] { background: #eeeee6; border-right: 1px solid #dddfd4; }
+[data-testid="stSidebar"] button { border-radius: 9px; font-size: 13px; min-height: 42px; }
+[data-testid="stSidebar"] button[kind="primary"] { background: #254f40; color: white; border: 1px solid #254f40; }
+[data-testid="stSidebar"] button[kind="secondary"] { background: #fafaf5; color: #364b40; border: 1px solid #d7dccf; }
+button:focus-visible, a:focus-visible { outline: 3px solid #b87737 !important; outline-offset: 3px; }
+.planner-brand { display: flex; justify-content: space-between; align-items: center; padding-bottom: 22px; border-bottom: 1px solid #d5dacd; margin-bottom: 26px; }
+.planner-logo { font-size: 23px; font-weight: 750; letter-spacing: -1px; }
+.planner-avatar { border: 1px solid #859786; border-radius: 50%; width: 32px; height: 32px; text-align: center; font-size: 22px; }
+.planner-title { font-family: Georgia, serif; font-size: 28px; }
+.planner-copy { color: #586757; font-size: 14px; line-height: 1.6; margin: 8px 0 24px; }
+.sidebar-label { font-size: 13px; font-weight: 650; margin: 21px 0 9px; }
+.page-masthead { display: flex; justify-content: space-between; gap: 20px; font-size: 10px; letter-spacing: 1.7px; margin: 0 0 20px; color: #55695b; }
+.page-masthead span:last-child { letter-spacing: 0; font-size: 12px; }
+.hero-card { padding: 44px; border-radius: 18px; background-position: center; background-size: cover; margin-bottom: 28px; color: white; }
+.hero-pill { font-size: 10px; letter-spacing: 2px; color: #edddac; margin-bottom: 20px; }
+.hero-title { font-family: Georgia, serif !important; font-size: clamp(38px, 4.4vw, 66px) !important; font-weight: 400 !important; line-height: 1.08 !important; letter-spacing: -2px; color: #fffdf4 !important; padding: 0 0 20px !important; }
+.hero-copy { font-size: 15px; line-height: 1.75; color: #f3f3e8; max-width: 440px; }
+.hero-footer { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 30px; padding-top: 18px; border-top: 1px solid #ffffff50; font-size: 12px; color: #f2ebd6; }
+[data-baseweb="tab-list"] { gap: 28px; }
+[data-baseweb="tab"] { padding: 10px 0; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 28px 0 22px; }
+.eyebrow { font-size: 10px; letter-spacing: 2px; color: #697b68; margin-bottom: 7px; }
+.section-heading h2 { font-family: Georgia, serif; font-size: 30px; font-weight: 400; padding: 0; color: #243e35; }
+.section-link { font-size: 12px; color: #61725f; }
+.destination-card { display: grid; grid-template-columns: minmax(220px, 36%) minmax(0, 1fr); overflow: hidden; border: 1px solid #dfe3d8; border-radius: 15px; background: #fffefb; margin: 0 0 10px; }
+.destination-image-wrap { position: relative; min-height: 340px; background: #b8c7ba; }
+.destination-photo { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.destination-image-gradient { position: absolute; inset: 0; background: linear-gradient(0deg, #102a23a6, transparent 65%); }
+.destination-image-overlay { position: absolute; bottom: 24px; left: 24px; color: white; }
+.destination-image-name { font-family: Georgia, serif; font-size: 30px; }
+.destination-image-country { font-size: 12px; letter-spacing: 1px; margin-top: 4px; }
+.rating-badge { position: absolute; top: 18px; left: 18px; background: #fffdf1ed; border-radius: 6px; padding: 7px 11px; color: #304737; font-size: 11px; }
+.destination-body { padding: 26px; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+.destination-topline { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.destination-title { font-family: Georgia, serif; font-size: 25px !important; font-weight: 400 !important; color: #243e35; padding: 0 !important; }
+.destination-subtitle { font-size: 12px; color: #667563; margin-top: 7px; }
+.match-ring { width: 66px; height: 66px; flex-shrink: 0; border-radius: 50%; background: radial-gradient(circle, #fffefb 59%, transparent 61%), conic-gradient(#406b4c var(--pct), #e6eadd 0); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; }
+.match-ring small { font-size: 9px; color: #62745f; text-transform: uppercase; letter-spacing: .7px; }
+.destination-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 8px; margin: 22px 0 12px; }
+.fact-pill { padding: 11px 8px; background: #f2f4ec; border-radius: 7px; }
+.fact-value { font-size: 12px; font-weight: 650; color: #334c38; }
+.fact-label { font-size: 11px; color: #5c6d57; margin-top: 5px; }
+.fact-meta { font-size: 10px; color: #687561; margin-top: 3px; }
+.destination-reason { color: #54634f; font-size: 13px; line-height: 1.7; margin: 4px 0 17px; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
+.travel-tag { font-size: 10px; padding: 5px 9px; border: 1px solid #dce2d4; border-radius: 5px; color: #496143; }
+[data-testid="stExpander"] { background: #fffefb; border-radius: 10px; margin-bottom: 18px; }
+.concierge-card { padding: 25px 30px; border-radius: 12px; background: #e9eddf; margin: 24px 0; border-left: 3px solid #748565; }
+.concierge-title { font-family: Georgia, serif; font-size: 23px; }
+.concierge-copy { font-size: 13px; color: #53664c; line-height: 1.7; margin-top: 6px; }
+@media (max-width: 1100px) { .destination-card { grid-template-columns: minmax(180px, 33%) minmax(0, 1fr); } .destination-body { padding: 20px; } }
+@media (max-width: 760px) { .block-container { padding: 1.2rem; } .hero-card { padding: 28px 24px; } .page-masthead span:last-child, .section-link { display: none; } .destination-card { grid-template-columns: 1fr; } .destination-image-wrap { min-height: 230px; } .destination-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } .section-heading h2 { font-size: 26px; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+/* Leave room for Streamlit's persistent toolbar. */
+.block-container { padding-top: 4.5rem; }
+[data-testid="stSidebar"] button p { white-space: normal; overflow: visible; text-overflow: clip; }
