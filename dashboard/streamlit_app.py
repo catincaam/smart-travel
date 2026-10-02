@@ -448,10 +448,10 @@ def radius_label(search_radius_m):
 
 
 def recommendation_facts(row):
-    summer_temp = row.get("summer_avg_temp", 0)
+    season_temp = row["season_avg_temp"]
     nearby_beach_count = row.get("nearby_beach_count", 0)
     search_radius_m = row.get("search_radius_m", 0)
-    summer_rain = row.get("summer_avg_daily_rain", 0)
+    season_rain = row["season_avg_daily_rain"]
     reason = row.get("reason", {})
 
     beach_level = beach_access_level(nearby_beach_count)
@@ -470,22 +470,12 @@ def recommendation_facts(row):
             "Budget fit",
             f"Destination cost: {cost_level}<br>Cost-of-living proxy",
         ),
-        (climate_level, "Summer weather", f"{summer_temp:.1f}C, {summer_rain:.1f} mm rain/day"),
+        (climate_level, f"{row['travel_season'].title()} weather", f"{season_temp:.1f}°C, {season_rain:.1f} mm rain/day"),
     ]
 
 
 def guide_for_destination(destination_name):
-    return DESTINATION_GUIDES.get(
-        destination_name,
-        {
-            "airport": "Main regional airport",
-            "stay": "3-5 days",
-            "best_months": "May, June, September",
-            "dont_miss": ["Old town", "Local viewpoints", "Food markets", "Day trips"],
-            "highlights": ["Good seasonal fit", "Balanced travel experience", "Local food", "Walkable areas"],
-            "good_to_know": ["Budget: varies", "Book ahead in peak season", "Check local transport"],
-        },
-    )
+    return DESTINATION_GUIDES.get(destination_name)
 
 
 def best_for_text(row):
@@ -500,18 +490,10 @@ def best_for_text(row):
 
 
 def travel_story(row, companion):
-    guide = guide_for_destination(row["destination_name"])
-    profile_label = friendly_cluster_profile(row).lower()
-    beach_level = beach_access_level(row.get("nearby_beach_count", 0)).lower()
-    food_level = score_level(row.get("reason", {}).get("food", 0)).lower()
-    weather = weather_level(row).lower()
-
     return (
-        f"{row['destination_name']} is a strong choice if you want a {profile_label} "
-        f"with {beach_level} beach access, a {food_level} food scene, and {weather} "
-        f"seasonal weather. It works especially well for {companion.lower()} travellers "
-        f"who want a trip that feels easy to plan but still has enough variety for "
-        f"{guide['stay']}."
+        f"{row['natural_reason']} "
+        f"Fit for your {companion.lower()} trip: {row['companion_match_score']:.0f}/100. "
+        "Compare the individual scores below to see the trade-offs."
     )
 
 
@@ -534,37 +516,35 @@ def similar_destinations(row, destinations):
 
 def render_travel_story(row, destinations, companion, budget):
     guide = guide_for_destination(row["destination_name"])
-    facts = recommendation_facts(row)
     similar = similar_destinations(row, destinations)
 
-    st.subheader(f"Why you'll love {row['destination_name']}")
+    st.subheader(f"Your match with {row['destination_name']}")
     st.write(travel_story(row, companion))
 
     glance_columns = st.columns(3)
     glance_items = [
-        ("Average temperature", f"{row.get('summer_avg_temp', 0):.1f}C in summer"),
+        ("Average temperature", f"{row['season_avg_temp']:.1f}°C in {row['travel_season']}"),
         ("Best for", best_for_text(row)),
-        ("Great for", companion),
-        ("Recommended stay", guide["stay"]),
+        ("Travel companion", companion),
         ("Budget preference", budget),
         ("Estimated cost level", row.get("cost_level", "Unknown")),
         ("Cost data basis", "Cost-of-living proxy estimate"),
-        ("Closest airport", guide["airport"]),
-        ("Best months", guide["best_months"]),
     ]
     for index, (label, value) in enumerate(glance_items):
         with glance_columns[index % 3]:
             st.markdown(f"**{label}**")
             st.caption(value)
 
-    st.markdown("**Highlights**")
-    st.markdown("\n".join(f"- {item}" for item in guide["highlights"]))
-
-    st.markdown("**Things you shouldn't miss**")
-    st.markdown("\n".join(f"- {item}" for item in guide["dont_miss"]))
-
-    st.markdown("**Good to know**")
-    st.markdown("\n".join(f"- {item}" for item in guide["good_to_know"]))
+    if guide:
+        st.caption("Editorial trip ideas: verify opening times, transport and availability before booking.")
+        st.markdown("**Highlights**")
+        st.markdown("\n".join(f"- {item}" for item in guide["highlights"]))
+        st.markdown("**Places to explore**")
+        st.markdown("\n".join(f"- {item}" for item in guide["dont_miss"]))
+        st.markdown("**Good to know**")
+        st.markdown("\n".join(f"- {item}" for item in guide["good_to_know"]))
+    else:
+        st.caption("A destination-specific editorial guide is not available yet. The scores below use the collected dataset.")
 
     st.markdown("**Why Smart Travel recommends it**")
     render_reason_scores(row["reason"])
@@ -668,6 +648,7 @@ def render_map():
         return
 
     map_html = MAP_PATH.read_text(encoding="utf-8")
+    st.caption("Dataset overview: this map shows all destinations and summer climate layers. It does not change with your shortlist or selected month.")
     components.html(map_html, height=650, scrolling=True)
 
 
@@ -743,7 +724,8 @@ def main():
         sidebar_label("Describe your ideal trip")
         trip_description = st.text_area(
             "Trip description",
-            value="I want a warm beach destination with good food in August.",
+            value="",
+            placeholder="Optional: e.g. quiet walks, museums and local food",
             height=90,
             label_visibility="collapsed",
         )
@@ -778,6 +760,11 @@ def main():
     recommendations = enrich_recommendations_with_facts(recommendations, destinations)
 
     render_hero(month, len(destinations))
+    st.caption("Choose your preferences in the sidebar to update your shortlist. On mobile, open the planner using the top-left arrow.")
+    with st.expander("About these recommendations"):
+        st.write("This prototype compares 20 European destinations. Match scores are weighted rankings, not probabilities or traveller ratings. Weather uses historical seasonal averages, not live forecasts. Budget fit uses a cost-of-living proxy, not flight or hotel quotes.")
+        st.write("Trip descriptions use English keyword matching. The selected month controls the season; dates and exclusions in free text are not interpreted reliably. Destination profiles come from K-Means clustering.")
+
 
     results_tab, map_tab, data_tab = st.tabs(["Recommendations", "Interactive Map", "Dataset"])
 

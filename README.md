@@ -1,5 +1,21 @@
 # Smart Travel
 
+[Open the live demo](https://smart-travel-catinca.streamlit.app/) · [Deployment guide](docs/DEPLOYMENT.md)
+
+![Smart Travel dashboard](docs/screenshots/deployed-dashboard.png)
+
+## Scope and limitations
+
+A portfolio prototype covering 20 European destinations. Recommendations combine
+rule-based preference translation, weighted ranking and K-Means destination profiles.
+Free text uses English keywords, not an LLM; negation and dates in descriptions are
+not reliably interpreted. The selected month determines the weather season.
+
+Weather is historical seasonal data, not a live forecast. Budget fit uses a
+cost-of-living proxy, not current booking prices. Match scores are ranking signals,
+not probabilities or user ratings. The map is a static overview of the dataset.
+The hosted demo serves Streamlit; the FastAPI service runs separately.
+
 Smart Travel is an end-to-end travel recommendation system. It collects and
 combines geospatial, weather, point-of-interest, cost proxy, clustering, and
 preference data to recommend destinations in an explainable way.
@@ -60,25 +76,6 @@ smart-travel/
 ├── TODO.md
 └── README.md
 ```
-
-## Screenshots
-
-Dashboard screenshots should be saved in:
-
-```text
-docs/screenshots/
-```
-
-Recommended files:
-
-```text
-docs/screenshots/dashboard.png
-docs/screenshots/recommendations.png
-docs/screenshots/map.png
-```
-
-The local Streamlit app is dynamic, so screenshots are best captured from the
-visible browser after running the dashboard.
 
 ## Run the API
 

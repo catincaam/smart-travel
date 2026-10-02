@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Literal
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
@@ -25,15 +25,15 @@ class RecommendationRequest(BaseModel):
         ge=0, le=10, description="Nightlife preference from 0 to 10."
     )
     month: str = Field(description="Travel month, for example August or October.")
-    budget: str = Field(
+    budget: Literal["Low (Essential)", "Medium (Comfort)", "High (Luxury)"] = Field(
         default="Medium (Comfort)",
         description="Budget preference: Low (Essential), Medium (Comfort), or High (Luxury).",
     )
-    weather_preference: str = Field(
+    weather_preference: Literal["Warm", "Mild", "Cool", "Any"] = Field(
         default="Any",
         description="Preferred weather: Warm, Mild, Cool, or Any.",
     )
-    companion: str = Field(
+    companion: Literal["Solo", "Partner", "Friends", "Family"] = Field(
         default="Partner",
         description="Who the user is travelling with: Solo, Partner, Friends, or Family.",
     )
@@ -54,6 +54,9 @@ class RecommendationResult(BaseModel):
     cluster_profile: str
     dominant_travel_style: str
     climate_category: str
+    travel_season: str
+    season_avg_temp: float
+    season_avg_daily_rain: float
     explanation: str
     natural_reason: str
     reason: Dict[str, float]

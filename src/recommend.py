@@ -5,8 +5,9 @@ from pathlib import Path
 import pandas as pd
 
 
-INPUT_PATH = Path("data/processed/destinations_clustered.csv")
-FEATURE_ENGINEERED_PATH = Path("data/processed/destinations_feature_engineered.csv")
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+INPUT_PATH = PROJECT_ROOT / "data/processed/destinations_clustered.csv"
+FEATURE_ENGINEERED_PATH = PROJECT_ROOT / "data/processed/destinations_feature_engineered.csv"
 OUTPUT_PATH = Path("data/processed/recommendation_sample.csv")
 
 PREFERENCE_COLUMNS = {
@@ -149,7 +150,6 @@ def load_destinations():
         validate="one_to_one",
     )
     merged = normalize_beach_columns(merged)
-    merged.to_csv(INPUT_PATH, index=False)
     return add_recommendation_signals(merged)
 
 
@@ -427,6 +427,9 @@ def recommend_destinations(
     weights = normalize_preferences(preferences)
 
     recommendations = destinations.copy()
+    recommendations["travel_season"] = season
+    recommendations["season_avg_temp"] = recommendations[f"{season}_avg_temp"]
+    recommendations["season_avg_daily_rain"] = recommendations[f"{season}_avg_daily_rain"]
 
     recommendations["preference_score"] = 0
     for preference_name, score_column in PREFERENCE_COLUMNS.items():
@@ -470,7 +473,7 @@ def recommend_destinations(
     ).round(2)
     recommendations["recommendation_score"] = recommendations[
         "recommendation_score"
-    ].clip(upper=100)
+    ].clip(lower=0, upper=100)
     recommendations["explanation"] = recommendations.apply(
         lambda row: build_explanation(row, preferences, season),
         axis=1,
@@ -495,6 +498,9 @@ def recommend_destinations(
         "cluster_profile",
         "dominant_travel_style",
         "climate_category",
+        "travel_season",
+        "season_avg_temp",
+        "season_avg_daily_rain",
         "summer_avg_temp",
         "summer_avg_daily_rain",
         "search_radius_m",
