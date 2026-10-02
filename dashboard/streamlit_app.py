@@ -5,7 +5,6 @@ import mimetypes
 
 import pandas as pd
 import streamlit as st
-import streamlit.components.v1 as components
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -23,6 +22,7 @@ from preference_translation import (  # noqa: E402
     TRIP_STYLES,
     WEATHER_OPTIONS,
     infer_weather_preference,
+    extract_text_signals,
     translate_user_preferences,
 )
 
@@ -639,17 +639,23 @@ def render_recommendation_card(row, rank, destinations, companion, budget):
         )
 
 
-def render_map():
-    if not MAP_PATH.exists():
-        st.warning(
-            "The interactive map has not been generated yet. "
-            "Run `python src/create_interactive_map.py` first."
-        )
+def render_map(recommendations, destinations):
+    map_data = recommendations.merge(
+        destinations[["destination_name", "country", "latitude", "longitude"]],
+        on=["destination_name", "country"], how="left", validate="one_to_one",
+    )
+    located = map_data.dropna(subset=["latitude", "longitude"])
+    if located.empty:
+        st.info("Coordinates are unavailable for this shortlist.")
         return
-
-    map_html = MAP_PATH.read_text(encoding="utf-8")
-    st.caption("Dataset overview: this map shows all destinations and summer climate layers. It does not change with your shortlist or selected month.")
-    components.html(map_html, height=650, scrolling=True)
+    st.caption("Your current shortlist. Change the planner preferences or result count to update the map.")
+    st.map(located, latitude="latitude", longitude="longitude", color="#254f40", size=15000)
+    st.dataframe(
+        located[["destination_name", "country", "recommendation_score", "season_avg_temp", "season_avg_daily_rain"]].rename(columns={
+            "destination_name": "Destination", "country": "Country", "recommendation_score": "Match / 100",
+            "season_avg_temp": "Season average °C", "season_avg_daily_rain": "Rain mm/day",
+        }), hide_index=True, width="stretch",
+    )
 
 
 def render_hero(month, destination_count):
@@ -760,10 +766,13 @@ def main():
     recommendations = enrich_recommendations_with_facts(recommendations, destinations)
 
     render_hero(month, len(destinations))
+    text_signals = extract_text_signals(trip_description)
+    if text_signals["excluded_preferences"]:
+        st.info("Interests switched off: " + ", ".join(text_signals["excluded_preferences"]) + ". These destinations may still offer those activities; this is not a hard filter.")
     st.caption("Choose your preferences in the sidebar to update your shortlist. On mobile, open the planner using the top-left arrow.")
     with st.expander("About these recommendations"):
         st.write("This prototype compares 20 European destinations. Match scores are weighted rankings, not probabilities or traveller ratings. Weather uses historical seasonal averages, not live forecasts. Budget fit uses a cost-of-living proxy, not flight or hotel quotes.")
-        st.write("Trip descriptions use English keyword matching. The selected month controls the season; dates and exclusions in free text are not interpreted reliably. Destination profiles come from K-Means clustering.")
+        st.write("Trip descriptions use English keyword matching. The selected month controls the season; simple exclusions such as “no nightlife” remove that interest from preference scoring, but do not filter out destinations. Complex phrasing and dates in free text are not supported. Destination profiles come from K-Means clustering.")
 
 
     results_tab, map_tab, data_tab = st.tabs(["Recommendations", "Interactive Map", "Dataset"])
@@ -795,7 +804,7 @@ def main():
     with map_tab:
         st.header("Explore Destinations On The Map")
         st.markdown('<a id="map"></a>', unsafe_allow_html=True)
-        render_map()
+        render_map(recommendations, destinations)
 
     with data_tab:
         st.header("Destination Dataset")

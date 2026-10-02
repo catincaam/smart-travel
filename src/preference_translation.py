@@ -1,4 +1,5 @@
 import re
+import unicodedata
 from difflib import SequenceMatcher
 
 
@@ -170,32 +171,62 @@ def text_matches_any_term(text, tokens, terms):
     )
 
 
+def normalize_text(text):
+    return "".join(c for c in unicodedata.normalize("NFKD", text.lower().replace("’", "'")) if not unicodedata.combining(c))
+
+
+def term_polarities(text, terms):
+    """Recognize short negated clauses; do not claim general language understanding."""
+    polarities = set()
+    clauses = re.split(r"[.,;!?]|\b(?:but|however|with|dar|insa|cu)\b|\band (?=i |we |want |prefer )", text)
+    for clause in clauses:
+        tokens = tokenize_text(clause)
+        for term in terms:
+            term_tokens = term.split()
+            for index in range(len(tokens) - len(term_tokens) + 1):
+                candidate = tokens[index:index + len(term_tokens)]
+                exact = candidate == term_tokens
+                fuzzy = len(term_tokens) == 1 and len(term) >= 4 and SequenceMatcher(None, candidate[0], term).ratio() >= 0.84
+                if not (exact or fuzzy):
+                    continue
+                prefix = " ".join(tokens[:index])
+                prefix = re.sub(r"\bnot (?:only|just)\b", "", prefix)
+                negative = bool(re.search(r"\b(?:no|not|without|avoid|exclude|skip|fara|nu|don t|donot)\b", prefix))
+                polarities.add(-1 if negative else 1)
+    return polarities
+
+
 def extract_text_signals(trip_description):
-    text = trip_description.lower()
-    tokens = tokenize_text(text)
+    text = normalize_text(trip_description)
     preference_weights = {}
     matched_keywords = []
-    weather_votes = {"Warm": 0, "Mild": 0, "Cool": 0}
-
+    excluded_preferences = set()
     for keyword, config in KEYWORD_WEIGHTS.items():
-        if text_matches_any_term(text, tokens, config["terms"]):
+        polarities = term_polarities(text, config["terms"])
+        if -1 in polarities:
+            # Explicit opt-outs take precedence over default style/activity weights.
+            if keyword in ("beach", "food", "culture", "nature", "nightlife"):
+                excluded_preferences.update(config["weights"])
+        elif 1 in polarities:
             matched_keywords.append(keyword)
             for preference, value in config["weights"].items():
                 preference_weights[preference] = preference_weights.get(preference, 0) + value
 
-    for weather_label, terms in TEXT_WEATHER_KEYWORDS.items():
-        weather_votes[weather_label] = sum(
-            1 for term in terms if text_contains_term(text, term) or fuzzy_contains_term(tokens, term)
-        )
-
-    inferred_weather = None
-    if any(weather_votes.values()):
-        inferred_weather = max(weather_votes, key=weather_votes.get)
-
+    weather_votes = {
+        label: sum(1 for term in terms if 1 in term_polarities(text, [term]))
+        for label, terms in TEXT_WEATHER_KEYWORDS.items()
+    }
+    # This common phrase expresses mild weather, not a desire for heat.
+    if re.search(r"\bnot (?:too )?hot\b", text):
+        weather_votes["Mild"] += 2
+    highest = max(weather_votes.values())
+    winners = [label for label, votes in weather_votes.items() if votes == highest]
+    inferred_weather = winners[0] if highest and len(winners) == 1 else None
     return {
         "preference_weights": preference_weights,
         "weather_preference": inferred_weather,
         "matched_keywords": matched_keywords,
+        "excluded_preferences": sorted(excluded_preferences),
     }
 
 
@@ -204,6 +235,8 @@ def apply_text_matching(preferences, trip_description):
     updated = preferences.copy()
 
     updated = apply_weights(updated, signals["preference_weights"])
+    for preference in signals["excluded_preferences"]:
+        updated[preference] = 0
 
     return updated
 

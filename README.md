@@ -8,12 +8,14 @@
 
 A portfolio prototype covering 20 European destinations. Recommendations combine
 rule-based preference translation, weighted ranking and K-Means destination profiles.
-Free text uses English keywords, not an LLM; negation and dates in descriptions are
-not reliably interpreted. The selected month determines the weather season.
+Free text uses English keywords, not an LLM. Simple negations such as "no nightlife"
+set that interest to zero, overriding style and activity weights; they do not filter
+out destinations. Complex phrasing and dates are not supported. The selected month
+determines the weather season.
 
 Weather is historical seasonal data, not a live forecast. Budget fit uses a
 cost-of-living proxy, not current booking prices. Match scores are ranking signals,
-not probabilities or user ratings. The map is a static overview of the dataset.
+not probabilities or user ratings. The dashboard map follows the current recommendation shortlist.
 The hosted demo serves Streamlit; the FastAPI service runs separately.
 
 Smart Travel is an end-to-end travel recommendation system. It collects and

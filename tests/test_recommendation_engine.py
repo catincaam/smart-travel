@@ -70,3 +70,21 @@ def test_companion_match_score_uses_different_travel_contexts():
 
     assert partner_score > friends_score
     assert family_score > friends_score
+
+
+def test_zero_pois_never_receive_positive_signal():
+    from src.recommend import percentile_score
+    scores = percentile_score(pd.Series([0, 0, 0, 1, 10]))
+    assert scores.iloc[:3].eq(0).all()
+    assert scores.iloc[4] > scores.iloc[3] > 0
+
+
+def test_beach_intent_favors_destinations_with_beach_access():
+    result = recommend_destinations(dict(food=0, beach=10, culture=0, nature=0, nightlife=0), top_n=5)
+    assert result.nearby_beach_count.gt(0).all()
+
+
+def test_culture_and_nightlife_intents_produce_different_rankings():
+    culture = recommend_destinations(dict(food=0, beach=0, culture=10, nature=0, nightlife=0))
+    nightlife = recommend_destinations(dict(food=0, beach=0, culture=0, nature=0, nightlife=10))
+    assert culture.destination_name.tolist() != nightlife.destination_name.tolist()

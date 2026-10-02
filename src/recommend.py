@@ -168,7 +168,7 @@ def normalize_beach_columns(df):
 
 
 def percentile_score(series):
-    return (series.rank(pct=True) * 100).round(2)
+    return (series.rank(pct=True) * 100).round(2).where(series > 0, 0)
 
 
 def add_recommendation_signals(df):

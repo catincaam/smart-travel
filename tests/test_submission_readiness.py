@@ -53,3 +53,15 @@ def test_dashboard_month_change_updates_visible_weather():
     cards = [item.value for item in dashboard.markdown if 'class="destination-card"' in item.value]
     assert len(cards) == 5
     assert all('Winter weather' in card and 'Summer weather' not in card for card in cards)
+
+
+def test_map_tracks_shortlist_and_text_exclusions():
+    dashboard = AppTest.from_file(str(ROOT / 'dashboard/streamlit_app.py')).run(timeout=30)
+    dashboard.text_area[0].set_value('no nightlife, but museums').run(timeout=30)
+    dashboard.slider[0].set_value(3).run(timeout=30)
+    assert not dashboard.exception
+    assert any('nightlife' in item.value for item in dashboard.info)
+    map_table = next(item.value for item in dashboard.dataframe if 'Destination' in item.value.columns)
+    cards = [item.value for item in dashboard.markdown if 'class="destination-card"' in item.value]
+    assert len(map_table) == len(cards) == 3
+    assert all(name in card for name, card in zip(map_table.Destination, cards))

@@ -49,3 +49,36 @@ def test_free_text_updates_recommendation_preferences():
 
     assert preferences["food"] == 10
     assert preferences["beach"] == 9
+
+
+import pytest
+
+
+@pytest.mark.parametrize('text,excluded', [
+    ('no beach', 'beach'), ('without nightlife', 'nightlife'),
+    ("I don't want clubs", 'nightlife'), ('avoid museums', 'culture'),
+    ('fără plajă', 'beach'), ('no beches', 'beach'),
+])
+def test_simple_negation_overrides_default_and_activity_weights(text, excluded):
+    preferences = translate_user_preferences('Balanced Trip', ['Beach', 'Nightlife', 'Museums'], 'Friends', 'Any', text)
+    assert preferences[excluded] == 0
+    assert excluded in extract_text_signals(text)['excluded_preferences']
+
+
+def test_negation_scope_preserves_positive_clause():
+    signals = extract_text_signals('no nightlife, but museums and local food')
+    assert signals['excluded_preferences'] == ['nightlife']
+    assert signals['preference_weights']['culture'] == 3
+    assert signals['preference_weights']['food'] == 3
+
+
+def test_not_only_is_not_an_exclusion():
+    assert extract_text_signals('not only museums but also food')['excluded_preferences'] == []
+
+
+@pytest.mark.parametrize('text,expected', [
+    ('not too hot', 'Mild'), ('no hot weather', 'Any'),
+    ('not cold, but warm', 'Warm'), ('warm or cool', 'Any'),
+])
+def test_weather_negation_and_ambiguous_intent(text, expected):
+    assert infer_weather_preference('Any', text) == expected
