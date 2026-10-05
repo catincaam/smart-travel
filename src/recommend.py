@@ -4,6 +4,11 @@ from pathlib import Path
 
 import pandas as pd
 
+try:
+    from .data_quality import require_valid_destinations
+except ImportError:
+    from data_quality import require_valid_destinations
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 INPUT_PATH = PROJECT_ROOT / "data/processed/destinations_clustered.csv"
@@ -137,7 +142,7 @@ def load_destinations():
     if required_scores.issubset(clustered.columns) and required_features.issubset(
         clustered.columns
     ):
-        return add_recommendation_signals(clustered)
+        return add_recommendation_signals(require_valid_destinations(clustered))
 
     # The clustering output can be narrow. For recommendations, we merge clusters
     # back into the full feature-engineered dataset so no scoring columns are lost.
@@ -150,7 +155,7 @@ def load_destinations():
         validate="one_to_one",
     )
     merged = normalize_beach_columns(merged)
-    return add_recommendation_signals(merged)
+    return add_recommendation_signals(require_valid_destinations(merged))
 
 
 def normalize_beach_columns(df):

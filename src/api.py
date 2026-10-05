@@ -4,8 +4,10 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
 try:
+    from .data_quality import DataQualityError
     from .recommend import recommend_destinations, season_from_month
 except ImportError:
+    from data_quality import DataQualityError
     from recommend import recommend_destinations, season_from_month
 
 
@@ -101,6 +103,8 @@ def recommend(request: RecommendationRequest):
             weather_preference=request.weather_preference,
             companion=request.companion,
         )
+    except DataQualityError as error:
+        raise HTTPException(status_code=503, detail="Destination data is being reviewed. Please try again later.") from error
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error)) from error
 

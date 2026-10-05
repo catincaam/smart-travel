@@ -1,5 +1,6 @@
 from pathlib import Path
 import sys
+import json
 import base64
 import mimetypes
 
@@ -16,6 +17,7 @@ DESTINATION_ASSETS_PATH = PROJECT_ROOT / "dashboard" / "assets" / "destinations"
 sys.path.append(str(SRC_PATH))
 
 from recommend import recommend_destinations  # noqa: E402
+from data_quality import inspect_destinations, DataQualityError  # noqa: E402
 from preference_translation import (  # noqa: E402
     ACTIVITY_WEIGHTS,
     TRAVEL_COMPANION_WEIGHTS,
@@ -674,9 +676,32 @@ def render_hero(month, destination_count):
     )
 
 
+def render_data_quality(report):
+    st.subheader("Data quality & sources")
+    cols = st.columns(3)
+    for col, label, value in zip(cols, ["Destinations checked", "Blocking issues", "Review flags"], [report["rows"], report["errors"], report["warnings"]]):
+        col.metric(label, value)
+    if not report["errors"]:
+        st.caption("Required fields passed completeness and validity checks. This does not certify accuracy or freshness.")
+    st.caption("Sources: coordinates — OpenStreetMap/Nominatim; nearby places — OpenStreetMap/Overpass; seasonal weather — Open-Meteo; budget — the project's cost-of-living proxy. Collection timestamps are not recorded in this dataset.")
+    st.caption("Available means the required values are present and valid under our rules. Zero places means a recorded zero, not missing data. A zero does not prove that no places exist in reality.")
+    if report["coverage"]:
+        st.dataframe(pd.DataFrame(report["coverage"]), hide_index=True, width="stretch")
+    if report["issues"]:
+        st.dataframe(pd.DataFrame(report["issues"]), hide_index=True, width="stretch")
+    st.download_button("Download data quality report", json.dumps(report, indent=2, ensure_ascii=False), file_name="smart-travel-data-quality.json", mime="application/json")
+    st.caption("Checked at " + report["checked_at_utc"] + " (UTC; not a data collection date).")
+
+
 def main():
     initialize_planner_state()
     destinations = load_destinations(DATA_PATH.stat().st_mtime)
+
+    quality_report = inspect_destinations(destinations)
+    if quality_report["errors"]:
+        st.error("Recommendations are temporarily unavailable because some source data needs review. No missing values have been replaced with zero.")
+        render_data_quality(quality_report)
+        st.stop()
 
     with st.sidebar:
         st.markdown(
@@ -755,14 +780,18 @@ def main():
         trip_description,
     )
 
-    recommendations = recommend_destinations(
-        preferences=preferences,
-        travel_month=month,
-        top_n=top_n,
-        budget=budget,
-        weather_preference=effective_weather_preference,
-        companion=companion,
-    )
+    try:
+        recommendations = recommend_destinations(
+            preferences=preferences,
+            travel_month=month,
+            top_n=top_n,
+            budget=budget,
+            weather_preference=effective_weather_preference,
+            companion=companion,
+        )
+    except DataQualityError:
+        st.error("Recommendation data needs review. Please try again later.")
+        st.stop()
     recommendations = enrich_recommendations_with_facts(recommendations, destinations)
 
     render_hero(month, len(destinations))
@@ -808,6 +837,7 @@ def main():
 
     with data_tab:
         st.header("Destination Dataset")
+        render_data_quality(quality_report)
         with st.expander("How your answers were translated"):
             st.json({"preferences": preferences, "weather_preference": effective_weather_preference})
         st.dataframe(

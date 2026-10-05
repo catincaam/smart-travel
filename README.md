@@ -388,3 +388,17 @@ features, while the user interface presents qualitative travel signals such as
 
 For large islands and regions, V1 uses one representative location. A future
 version should sample multiple points instead of expanding one radius too far.
+
+## Data quality
+
+The final dataset is checked before recommendation scoring. Missing values,
+invalid numeric ranges, unsupported categories and duplicate destination keys
+block scoring; unusual POI counts are flagged for review without removal.
+The **Dataset** tab shows coverage and a downloadable report.
+
+```bash
+python -m src.data_quality --output /tmp/data-quality.json
+```
+
+See [validation rules and limitations](docs/DATA_QUALITY.md). Checks do not
+certify factual accuracy or freshness; original data is preserved.
